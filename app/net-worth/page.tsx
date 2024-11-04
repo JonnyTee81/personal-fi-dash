@@ -3,6 +3,26 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import dynamic from 'next/dynamic'
 import { StatsCard } from "@/components/dashboard/stats-card"
+import { NetWorthTable } from "@/components/dashboard/net-worth-table"
+import { QuickActions } from "@/components/dashboard/quick-actions"
+import { AssetAllocation } from "@/components/dashboard/asset-allocation"
+import { RiskAnalysis } from "@/components/dashboard/risk-analysis"
+import { InvestmentPerformance } from "@/components/dashboard/investment-performance"
+import { FinancialRatios } from "@/components/dashboard/financial-ratios"
+import { RetirementProjection } from "@/components/dashboard/retirement-projection"
+import { TaxAnalysis } from "@/components/dashboard/tax-analysis"
+import { InvestmentAllocation } from "@/components/dashboard/investment-allocation"
+import { DebtAnalysis } from "@/components/dashboard/debt-analysis"
+import { CashFlowAnalysis } from "@/components/dashboard/cash-flow-analysis"
+import { LoanPayoffCalculator } from "@/components/dashboard/loan-payoff-calculator"
+import { InvestmentReturns } from "@/components/dashboard/investment-returns"
+import { PortfolioDiversification } from "@/components/dashboard/portfolio-diversification"
+import { MonteCarloSimulation } from "@/components/dashboard/monte-carlo-simulation"
+import { FinancialGoalsProgress } from "@/components/dashboard/financial-goals-progress"
+import { InvestmentScenario } from "@/components/dashboard/investment-scenario"
+import { DebtPayoffStrategy } from "@/components/dashboard/debt-payoff-strategy"
+import { TaxOptimization } from "@/components/dashboard/tax-optimization"
+import { EstatePlanning } from "@/components/dashboard/estate-planning"
 
 const NetWorthChart = dynamic(
     () => import('@/components/dashboard/net-worth-chart').then(mod => mod.NetWorthChart),
@@ -47,14 +67,50 @@ export default function NetWorthPage() {
           />
         </div>
 
+        {/* Quick Actions */}
+        <div className="col-span-1 md:col-span-12">
+          <QuickActions />
+        </div>
+
+        {/* Investment Performance */}
+        <div className="col-span-1 md:col-span-8">
+          <InvestmentPerformance />
+        </div>
+
+        {/* Financial Ratios */}
+        <div className="col-span-1 md:col-span-4">
+          <FinancialRatios />
+        </div>
+
         {/* Net Worth Chart */}
         <div className="col-span-1 md:col-span-8">
           <NetWorthChart />
         </div>
 
-        {/* Assets Breakdown */}
+        {/* Assets Chart */}
         <div className="col-span-1 md:col-span-4">
           <AssetsChart />
+        </div>
+
+        {/* Asset Allocation and Risk Analysis */}
+        <div className="col-span-1 md:col-span-6">
+          <AssetAllocation />
+        </div>
+        <div className="col-span-1 md:col-span-6">
+          <RiskAnalysis />
+        </div>
+
+        {/* Retirement and Tax Analysis */}
+        <div className="col-span-1 md:col-span-8">
+          <RetirementProjection />
+        </div>
+        <div className="col-span-1 md:col-span-4">
+          <TaxAnalysis />
+        </div>
+
+        {/* Historical Data */}
+        <div className="col-span-1 md:col-span-12">
+          <NetWorthTable />
         </div>
 
         {/* Detailed Breakdown */}
@@ -89,6 +145,54 @@ export default function NetWorthPage() {
               </div>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Investment Allocation and Debt Analysis */}
+        <div className="col-span-1 md:col-span-8">
+          <InvestmentAllocation />
+        </div>
+        <div className="col-span-1 md:col-span-4">
+          <DebtAnalysis />
+        </div>
+
+        {/* Cash Flow Analysis and Loan Payoff Calculator */}
+        <div className="col-span-1 md:col-span-8">
+          <CashFlowAnalysis />
+        </div>
+        <div className="col-span-1 md:col-span-4">
+          <LoanPayoffCalculator />
+        </div>
+
+        {/* Investment Returns and Portfolio Diversification */}
+        <div className="col-span-1 md:col-span-8">
+          <InvestmentReturns />
+        </div>
+        <div className="col-span-1 md:col-span-4">
+          <PortfolioDiversification />
+        </div>
+
+        {/* Monte Carlo Simulation and Financial Goals Progress */}
+        <div className="col-span-1 md:col-span-8">
+          <MonteCarloSimulation />
+        </div>
+        <div className="col-span-1 md:col-span-4">
+          <FinancialGoalsProgress />
+        </div>
+
+        {/* Investment Scenario and Debt Payoff Strategy */}
+        <div className="col-span-1 md:col-span-8">
+          <InvestmentScenario />
+        </div>
+        <div className="col-span-1 md:col-span-4">
+          <DebtPayoffStrategy />
+        </div>
+
+        {/* Tax Optimization and Estate Planning */}
+        <div className="col-span-1 md:col-span-8">
+          <TaxOptimization />
+        </div>
+        <div className="col-span-1 md:col-span-4">
+          <EstatePlanning />
         </div>
       </div>
     </div>
