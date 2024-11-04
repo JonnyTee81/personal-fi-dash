@@ -85,7 +85,12 @@ export function NetWorthChart() {
         },
         ticks: {
           color: colors.textColor,
-          callback: (value: number) => `$${value.toLocaleString()}`
+          callback: function(value: string | number) {
+            if (typeof value === 'number') {
+              return `$${value.toLocaleString()}`
+            }
+            return value
+          }
         }
       }
     }

@@ -7,7 +7,6 @@ import {
   LayoutDashboard,
   PieChart,
   Receipt,
-  RefreshCcw,
   Target,
   Wallet,
   Settings,
@@ -21,7 +20,6 @@ const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
   { name: 'Net Worth', href: '/net-worth', icon: PieChart },
   { name: 'Bills', href: '/bills', icon: Receipt },
-  { name: 'Recurring', href: '/recurring', icon: RefreshCcw },
   { name: 'Goals', href: '/goals', icon: Target },
   { name: 'Budget', href: '/budget', icon: Wallet },
 ]
