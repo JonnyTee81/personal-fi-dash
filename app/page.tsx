@@ -27,28 +27,28 @@ import { IncomeGoal } from "@/components/dashboard/income-goal"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0A0B0D] text-white p-4 md:p-8">
+    <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
       {/* Header */}
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
-          <h1 className="text-xl font-light">Personal Finance Tracker</h1>
+          <h1 className="text-xl font-light text-foreground">Personal Finance Tracker</h1>
           <div className="flex items-baseline gap-2">
-            <h2 className="text-2xl font-bold">Available Balance</h2>
-            <span className="text-3xl font-bold text-[#14F195]">$14,822</span>
+            <h2 className="text-2xl font-bold text-foreground">Available Balance</h2>
+            <span className="text-3xl font-bold text-primary">$14,822</span>
           </div>
         </div>
         
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto">
           <div className="flex gap-2 w-full sm:w-auto">
-            <button className="flex-1 sm:flex-none px-4 py-2 bg-[#1C1D22] rounded-lg">Dashboard</button>
-            <button className="flex-1 sm:flex-none px-4 py-2 bg-[#1C1D22] rounded-lg">Spreadsheet</button>
+            <button className="flex-1 sm:flex-none px-4 py-2 bg-card rounded-lg text-foreground">Dashboard</button>
+            <button className="flex-1 sm:flex-none px-4 py-2 bg-card rounded-lg text-foreground">Spreadsheet</button>
           </div>
           <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-start">
             <div className="text-right">
-              <p className="text-sm">Simon K. Jimmy</p>
-              <p className="text-xs text-gray-400">Mortgage consultant</p>
+              <p className="text-sm text-foreground">Simon K. Jimmy</p>
+              <p className="text-xs text-muted-foreground">Mortgage consultant</p>
             </div>
-            <div className="w-10 h-10 rounded-full bg-gray-300"></div>
+            <div className="w-10 h-10 rounded-full bg-accent"></div>
           </div>
         </div>
       </header>

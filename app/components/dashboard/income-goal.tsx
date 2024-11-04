@@ -1,23 +1,42 @@
+'use client'
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
+import { Target } from "lucide-react"
 
 export function IncomeGoal() {
-  const current = 24050
-  const target = 39276
-  const progress = Math.round((current / target) * 100)
+  const currentIncome = 24050
+  const goalIncome = 30000
+  const progress = (currentIncome / goalIncome) * 100
 
   return (
-    <Card className="bg-[#1C1D22] border-0">
+    <Card className="bg-card border-0">
       <CardHeader>
-        <div className="flex justify-between items-baseline">
-          <CardTitle className="text-white">Income Goal</CardTitle>
-          <span className="text-[#14F195]">{progress}%</span>
+        <div className="flex items-center justify-between">
+          <CardTitle className="flex items-center gap-2">
+            <Target className="w-5 h-5" />
+            Income Goal
+          </CardTitle>
+          <span className="text-sm text-muted-foreground">Monthly</span>
         </div>
       </CardHeader>
       <CardContent>
-        <Progress value={progress} className="h-2 bg-gray-800" indicatorClassName="bg-[#14F195]" />
-        <div className="mt-2 text-sm text-gray-400">
-          Progress to month: ${current.toLocaleString()} / ${target.toLocaleString()}
+        <div className="space-y-4">
+          <div className="flex justify-between">
+            <span className="text-sm text-muted-foreground">Progress</span>
+            <span className="text-sm font-medium">{Math.round(progress)}%</span>
+          </div>
+          <Progress value={progress} className="h-2" indicatorClassName="bg-primary" />
+          <div className="flex justify-between text-sm">
+            <div>
+              <p className="text-muted-foreground">Current</p>
+              <p className="font-medium text-foreground">${currentIncome.toLocaleString()}</p>
+            </div>
+            <div className="text-right">
+              <p className="text-muted-foreground">Goal</p>
+              <p className="font-medium text-foreground">${goalIncome.toLocaleString()}</p>
+            </div>
+          </div>
         </div>
       </CardContent>
     </Card>

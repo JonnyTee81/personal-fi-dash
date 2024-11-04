@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { Logo } from "@/components/logo"
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
@@ -35,13 +36,13 @@ function SidebarContent() {
   return (
     <div className="flex flex-col h-full">
       {/* Logo and Theme Toggle */}
-      <div className="p-6 flex justify-between items-center">
-        <div className="text-2xl font-bold">Finance</div>
+      <div className="p-6 flex items-center justify-between border-b border-border">
+        <Logo />
         <ThemeToggle />
       </div>
 
       {/* Main Navigation */}
-      <nav className="flex-1 px-4">
+      <nav className="flex-1 px-4 py-4">
         <div className="space-y-1">
           {navigation.map((item) => {
             const isActive = pathname === item.href
@@ -52,8 +53,8 @@ function SidebarContent() {
                 className={cn(
                   "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                   isActive
-                    ? "bg-[#14F195] text-black"
-                    : "text-gray-400 hover:text-white hover:bg-gray-800"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground hover:bg-accent"
                 )}
               >
                 <item.icon className="w-5 h-5" />
@@ -65,12 +66,12 @@ function SidebarContent() {
       </nav>
 
       {/* Bottom Navigation */}
-      <div className="p-4 border-t border-gray-800">
+      <div className="p-4 border-t border-border">
         {bottomNavigation.map((item) => (
           <Link
             key={item.name}
             href={item.href}
-            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
+            className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
           >
             <item.icon className="w-5 h-5" />
             {item.name}
@@ -87,8 +88,8 @@ export function Sidebar() {
       {/* Mobile Menu */}
       <Sheet>
         <SheetTrigger asChild>
-          <button className="fixed top-4 left-4 z-40 rounded-lg p-2 bg-[#1C1D22] md:hidden">
-            <Menu className="w-6 h-6 text-white" />
+          <button className="fixed top-4 left-4 z-40 rounded-lg p-2 bg-card md:hidden">
+            <Menu className="w-6 h-6 text-foreground" />
           </button>
         </SheetTrigger>
         <SheetContent side="left" className="p-0">
@@ -97,7 +98,7 @@ export function Sidebar() {
       </Sheet>
 
       {/* Desktop Sidebar */}
-      <div className="hidden md:flex fixed left-0 top-0 h-screen w-64 bg-[#1C1D22] border-r border-gray-800">
+      <div className="hidden md:flex fixed left-0 top-0 h-screen w-64 bg-card border-r border-border">
         <SidebarContent />
       </div>
     </>

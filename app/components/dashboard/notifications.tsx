@@ -1,43 +1,32 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+'use client'
+
 import { NotificationCard } from "./notification-card"
-import { AlertCircle, Receipt, Clock, MessageCircle } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Bell, AlertTriangle, Info } from "lucide-react"
 
 export function Notifications() {
-  const notifications = [
-    {
-      message: "3 Bills are past Due, Pay soon to avoid late fees.",
-      type: "warning" as const,
-      icon: <AlertCircle className="w-5 h-5 text-orange-500" />
-    },
-    {
-      message: "Electricity bill due in 3 days",
-      type: "info" as const,
-      icon: <Receipt className="w-5 h-5 text-blue-500" />
-    },
-    {
-      message: "Netflix subscription will renew in 5 days",
-      type: "info" as const,
-      icon: <Clock className="w-5 h-5 text-blue-500" />
-    }
-  ]
-
   return (
-    <Card className="bg-[#1C1D22] border-0">
+    <Card className="bg-card border-0">
       <CardHeader>
-        <CardTitle className="text-white flex items-center gap-2">
-          <MessageCircle className="w-5 h-5" />
-          Notifications
-        </CardTitle>
+        <div className="flex items-center justify-between">
+          <CardTitle className="flex items-center gap-2">
+            <Bell className="w-5 h-5" />
+            Notifications
+          </CardTitle>
+          <span className="text-sm text-muted-foreground">Today</span>
+        </div>
       </CardHeader>
-      <CardContent className="flex flex-col gap-3">
-        {notifications.map((notification, index) => (
-          <NotificationCard
-            key={index}
-            message={notification.message}
-            type={notification.type}
-            icon={notification.icon}
-          />
-        ))}
+      <CardContent className="space-y-4">
+        <NotificationCard
+          message="Your credit card payment is due in 3 days"
+          type="warning"
+          icon={<AlertTriangle className="w-5 h-5 text-orange-500" />}
+        />
+        <NotificationCard
+          message="You've reached 80% of your shopping budget"
+          type="info"
+          icon={<Info className="w-5 h-5 text-blue-500" />}
+        />
       </CardContent>
     </Card>
   )

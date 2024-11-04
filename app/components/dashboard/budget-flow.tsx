@@ -7,7 +7,16 @@ export function BudgetFlow() {
   // Data format: ["Source", "Target", "Value"]
   const data = [
     ["From", "To", "Amount"],
-    ["Income", "Take Home", 24050],
+    // Income Sources
+    ["Primary Salary", "Income", 20000],
+    ["Side Business", "Income", 3000],
+    ["Investments", "Income", 1050],
+    
+    // Income to Take Home
+    ["Income", "Taxes", 5000],
+    ["Income", "Take Home", 19050],
+    
+    // Take Home to Categories
     ["Take Home", "Housing", 2200],
     ["Take Home", "Food", 800],
     ["Take Home", "Transportation", 400],
@@ -16,7 +25,7 @@ export function BudgetFlow() {
     ["Take Home", "Entertainment", 200],
     ["Take Home", "Shopping", 650],
     ["Take Home", "Healthcare", 300],
-    ["Take Home", "Savings", 18870],
+    ["Take Home", "Savings", 13870],
   ]
 
   const options = {
@@ -24,7 +33,14 @@ export function BudgetFlow() {
     sankey: {
       node: {
         colors: [
-          '#14F195', // Income
+          // Income Sources
+          '#10B981', // Primary Salary
+          '#059669', // Side Business
+          '#047857', // Investments
+          '#14F195', // Income (Total)
+          
+          // Core Categories
+          '#FF6B6B', // Taxes
           '#6366F1', // Take Home
           '#FF6B6B', // Housing
           '#4ECDC4', // Food
@@ -41,6 +57,7 @@ export function BudgetFlow() {
           fontSize: 14,
           color: '#fff',
         },
+        nodePadding: 40,
       },
       link: {
         colorMode: 'gradient',
