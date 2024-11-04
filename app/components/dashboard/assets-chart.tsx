@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Doughnut } from "react-chartjs-2"
-import { type ChartData } from "@/lib/chart-setup"
+import { doughnutOptions, type ChartData } from "@/lib/chart-setup"
 
 export function AssetsChart() {
   const data: ChartData<'doughnut'> = {
@@ -14,23 +14,6 @@ export function AssetsChart() {
     }]
   }
 
-  const options = {
-    responsive: true,
-    cutout: '75%',
-    plugins: {
-      legend: {
-        position: 'right' as const,
-        labels: {
-          color: '#fff',
-          padding: 20,
-          font: {
-            size: 14
-          }
-        }
-      }
-    }
-  }
-
   return (
     <Card className="bg-[#1C1D22] border-0">
       <CardHeader>
@@ -38,7 +21,7 @@ export function AssetsChart() {
       </CardHeader>
       <CardContent>
         <div className="h-[300px] flex items-center">
-          <Doughnut data={data} options={options} />
+          <Doughnut data={data} options={doughnutOptions} />
         </div>
       </CardContent>
     </Card>

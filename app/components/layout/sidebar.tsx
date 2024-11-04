@@ -11,8 +11,11 @@ import {
   Target,
   Wallet,
   Settings,
-  HelpCircle
+  HelpCircle,
+  Menu
 } from 'lucide-react'
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
@@ -28,14 +31,15 @@ const bottomNavigation = [
   { name: 'Help', href: '/help', icon: HelpCircle },
 ]
 
-export function Sidebar() {
+function SidebarContent() {
   const pathname = usePathname()
-
+  
   return (
-    <div className="flex flex-col fixed left-0 top-0 h-screen w-64 bg-[#1C1D22] border-r border-gray-800">
-      {/* Logo */}
-      <div className="p-6">
-        <div className="text-2xl font-bold text-white">Finance</div>
+    <div className="flex flex-col h-full">
+      {/* Logo and Theme Toggle */}
+      <div className="p-6 flex justify-between items-center">
+        <div className="text-2xl font-bold">Finance</div>
+        <ThemeToggle />
       </div>
 
       {/* Main Navigation */}
@@ -76,5 +80,28 @@ export function Sidebar() {
         ))}
       </div>
     </div>
+  )
+}
+
+export function Sidebar() {
+  return (
+    <>
+      {/* Mobile Menu */}
+      <Sheet>
+        <SheetTrigger asChild>
+          <button className="fixed top-4 left-4 z-40 rounded-lg p-2 bg-[#1C1D22] md:hidden">
+            <Menu className="w-6 h-6 text-white" />
+          </button>
+        </SheetTrigger>
+        <SheetContent side="left" className="p-0">
+          <SidebarContent />
+        </SheetContent>
+      </Sheet>
+
+      {/* Desktop Sidebar */}
+      <div className="hidden md:flex fixed left-0 top-0 h-screen w-64 bg-[#1C1D22] border-r border-gray-800">
+        <SidebarContent />
+      </div>
+    </>
   )
 } 

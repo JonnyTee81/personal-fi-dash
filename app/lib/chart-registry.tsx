@@ -1,10 +1,1 @@
-'use client'
-
-import { Chart, registerables } from 'chart.js'
-import { ReactNode } from 'react'
-
-Chart.register(...registerables)
-
-export function ChartRegistry({ children }: { children: ReactNode }) {
-  return <>{children}</>
-} 
+// This file can be deleted as we're now handling Chart.js registration in chart-setup.ts 

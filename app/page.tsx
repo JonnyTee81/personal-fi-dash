@@ -27,9 +27,9 @@ import { IncomeGoal } from "@/components/dashboard/income-goal"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#0A0B0D] text-white p-8">
+    <div className="min-h-screen bg-[#0A0B0D] text-white p-4 md:p-8">
       {/* Header */}
-      <header className="flex justify-between items-center mb-8">
+      <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
           <h1 className="text-xl font-light">Personal Finance Tracker</h1>
           <div className="flex items-baseline gap-2">
@@ -38,10 +38,12 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="flex items-center gap-4">
-          <button className="px-4 py-2 bg-[#1C1D22] rounded-lg">Dashboard</button>
-          <button className="px-4 py-2 bg-[#1C1D22] rounded-lg">Spreadsheet</button>
-          <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto">
+          <div className="flex gap-2 w-full sm:w-auto">
+            <button className="flex-1 sm:flex-none px-4 py-2 bg-[#1C1D22] rounded-lg">Dashboard</button>
+            <button className="flex-1 sm:flex-none px-4 py-2 bg-[#1C1D22] rounded-lg">Spreadsheet</button>
+          </div>
+          <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-start">
             <div className="text-right">
               <p className="text-sm">Simon K. Jimmy</p>
               <p className="text-xs text-gray-400">Mortgage consultant</p>
@@ -52,41 +54,41 @@ export default function Home() {
       </header>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         {/* Stats Cards */}
-        <div className="col-span-4">
+        <div className="col-span-1 md:col-span-4">
           <StatsCard 
             title="Total Net Worth" 
             value="278,378" 
             className="bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53]"
           />
         </div>
-        <div className="col-span-4">
+        <div className="col-span-1 md:col-span-4">
           <StatsCard title="Spendings" value="9,228" />
         </div>
-        <div className="col-span-4">
+        <div className="col-span-1 md:col-span-4">
           <StatsCard title="Income" value="24,050" />
         </div>
 
         {/* First row of charts */}
-        <div className="col-span-6">
+        <div className="col-span-1 md:col-span-6">
           <IncomeSources />
         </div>
-        <div className="col-span-6">
+        <div className="col-span-1 md:col-span-6">
           <SpendingBreakdown />
         </div>
 
         {/* Second row */}
-        <div className="col-span-8">
+        <div className="col-span-1 md:col-span-8">
           <IncomeExpensesChart />
         </div>
-        <div className="col-span-4 flex flex-col gap-6">
+        <div className="col-span-1 md:col-span-4 flex flex-col gap-6">
           <IncomeGoal />
           <Notifications />
         </div>
 
         {/* Third row */}
-        <div className="col-span-6">
+        <div className="col-span-1 md:col-span-6">
           <AssetsChart />
         </div>
       </div>
