@@ -2,9 +2,14 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Bar } from "react-chartjs-2"
-import { type ChartData, createChartOptions } from "@/lib/chart-setup"
+import { type ChartData } from "@/lib/chart-setup"
+import { useThemeColors } from "@/hooks/use-theme-colors"
+import { createChartOptions } from "@/lib/chart-setup"
 
 export function IncomeSources() {
+  const colors = useThemeColors()
+  const { defaultOptions } = createChartOptions(colors)
+
   const data: ChartData<'bar'> = {
     labels: ['E-commerce', 'Google Adsense', 'My Shop', 'Salary'],
     datasets: [{
@@ -14,22 +19,15 @@ export function IncomeSources() {
     }]
   }
 
-  const { defaultOptions } = createChartOptions({
-    gridColor: '#2D2E33',
-    textColor: '#9CA3AF',
-    tooltipBackground: '#1C1D22',
-    tooltipText: '#FFFFFF'
-  })
-
   const options = {
     ...defaultOptions,
     indexAxis: 'x' as const,
   }
 
   return (
-    <Card className="bg-[#1C1D22] border-0">
+    <Card className="bg-card border-0">
       <CardHeader>
-        <CardTitle className="text-white">Income Source</CardTitle>
+        <CardTitle>Income Source</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="h-[200px]">

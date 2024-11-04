@@ -6,7 +6,7 @@ import { type ChartData } from "@/lib/chart-setup"
 import { useThemeColors } from "@/hooks/use-theme-colors"
 import { createChartOptions } from "@/lib/chart-setup"
 
-export function IncomeExpensesChart() {
+export function NetWorthChart() {
   const colors = useThemeColors()
   const { lineChartOptions } = createChartOptions(colors)
   
@@ -16,32 +16,36 @@ export function IncomeExpensesChart() {
     labels,
     datasets: [
       {
-        label: 'Income',
-        data: [15000, 18000, 21000, 24000, 19000, 22000, 25000, 23000, 20000, 24000, 22000, 20239],
+        label: 'Net Worth',
+        data: [240000, 245000, 255000, 258000, 262000, 268000, 270000, 272000, 275000, 276000, 277000, 278378],
         borderColor: '#14F195',
+        backgroundColor: 'rgba(20, 241, 149, 0.1)',
         tension: 0.4,
         borderWidth: 2,
-        pointRadius: 0,
-      },
-      {
-        label: 'Expenses',
-        data: [12000, 14000, 11000, 15000, 18000, 17000, 13000, 16000, 15000, 14000, 16000, 20239],
-        borderColor: '#FF6B6B',
-        tension: 0.4,
-        borderWidth: 2,
+        fill: true,
         pointRadius: 0,
       }
     ]
   }
 
+  const options = {
+    ...lineChartOptions,
+    plugins: {
+      ...lineChartOptions.plugins,
+      legend: {
+        display: false
+      }
+    }
+  }
+
   return (
     <Card className="bg-card border-0">
       <CardHeader>
-        <CardTitle>Income & Expenses</CardTitle>
+        <CardTitle>Net Worth Trend</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="h-[300px]">
-          <Line data={data} options={lineChartOptions} />
+        <div className="h-[400px]">
+          <Line data={data} options={options} />
         </div>
       </CardContent>
     </Card>
