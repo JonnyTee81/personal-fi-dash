@@ -2,7 +2,38 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Line } from "react-chartjs-2"
-import { lineChartOptions, type ChartData } from "@/lib/chart-setup"
+import { type ChartData, ChartOptions } from "@/lib/chart-setup"
+
+const chartOptions: ChartOptions<'line'> = {
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    y: {
+      beginAtZero: true,
+      grid: {
+        color: '#2D2D33'
+      },
+      ticks: {
+        color: '#9CA3AF'
+      }
+    },
+    x: {
+      grid: {
+        color: '#2D2D33'
+      },
+      ticks: {
+        color: '#9CA3AF'
+      }
+    }
+  },
+  plugins: {
+    legend: {
+      labels: {
+        color: '#9CA3AF'
+      }
+    }
+  }
+}
 
 export function IncomeExpensesChart() {
   const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -36,7 +67,7 @@ export function IncomeExpensesChart() {
       </CardHeader>
       <CardContent>
         <div className="h-[300px]">
-          <Line data={data} options={lineChartOptions} />
+          <Line data={data} options={chartOptions} />
         </div>
       </CardContent>
     </Card>

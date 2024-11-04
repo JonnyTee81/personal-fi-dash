@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { MessageCircle } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 interface NotificationCardProps {
   message: string
@@ -20,10 +21,13 @@ export function NotificationCard({ message, type, icon }: NotificationCardProps)
   }
 
   return (
-    <Card className={`bg-[#1C1D22] border-0 ${getBorderColor()}`}>
+    <Card className={cn(
+      "bg-card border-0",
+      getBorderColor()
+    )}>
       <CardContent className="flex items-center gap-3 p-4">
-        {icon || <MessageCircle className="w-5 h-5 text-gray-400" />}
-        <p className="text-sm text-gray-200">{message}</p>
+        {icon || <MessageCircle className="w-5 h-5 text-muted-foreground" />}
+        <p className="text-sm text-card-foreground">{message}</p>
       </CardContent>
     </Card>
   )

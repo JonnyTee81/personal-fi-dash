@@ -2,10 +2,10 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Doughnut } from "react-chartjs-2"
-import { doughnutOptions, type ChartData } from "@/lib/chart-setup"
+import { createChartOptions } from '@/lib/chart-setup'
 
 export function AssetsChart() {
-  const data: ChartData<'doughnut'> = {
+  const data = {
     labels: ['Gold', 'Stock', 'Land', 'Warehouse'],
     datasets: [{
       data: [15700, 22500, 135000, 120000],
@@ -13,6 +13,13 @@ export function AssetsChart() {
       borderWidth: 0,
     }]
   }
+
+  const { doughnutOptions } = createChartOptions({
+    gridColor: '#2D2E33',
+    textColor: '#9CA3AF',
+    tooltipBackground: '#1C1D22',
+    tooltipText: '#FFFFFF'
+  })
 
   return (
     <Card className="bg-[#1C1D22] border-0">

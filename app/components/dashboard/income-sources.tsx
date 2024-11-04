@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Bar } from "react-chartjs-2"
-import { defaultOptions, type ChartData } from "@/lib/chart-setup"
+import { type ChartData, createChartOptions } from "@/lib/chart-setup"
 
 export function IncomeSources() {
   const data: ChartData<'bar'> = {
@@ -14,9 +14,16 @@ export function IncomeSources() {
     }]
   }
 
+  const { defaultOptions } = createChartOptions({
+    gridColor: '#2D2E33',
+    textColor: '#9CA3AF',
+    tooltipBackground: '#1C1D22',
+    tooltipText: '#FFFFFF'
+  })
+
   const options = {
     ...defaultOptions,
-    indexAxis: 'y' as const,
+    indexAxis: 'x' as const,
   }
 
   return (

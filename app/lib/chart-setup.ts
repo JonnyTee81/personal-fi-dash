@@ -31,184 +31,141 @@ ChartJS.register(
 // Export types
 export type { ChartOptions, ChartData }
 
-// Default chart options
-export const defaultOptions: ChartOptions<'bar'> = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: {
-      display: false,
-    },
-    tooltip: {
-      backgroundColor: '#1C1D22',
-      padding: window?.innerWidth < 768 ? 16 : 12,
-      cornerRadius: 8,
-      bodyFont: {
-        size: 14,
-        family: 'Inter',
-      },
-      callbacks: {
-        label: function(context) {
-          return `$${context.raw?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-        }
-      },
-      interaction: {
-        intersect: false,
-        mode: 'nearest',
-      },
-    },
-  },
-  scales: {
-    x: {
-      grid: {
+// Create chart options factory
+export function createChartOptions(colors: {
+  gridColor: string
+  textColor: string
+  tooltipBackground: string
+  tooltipText: string
+}) {
+  const defaultOptions: ChartOptions<'bar'> = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
         display: false,
       },
-      ticks: {
-        color: '#6B7280',
-        maxRotation: 45,
-        minRotation: 45,
-        font: {
-          size: 11,
-        },
-      },
-    },
-    y: {
-      grid: {
-        color: '#1C1D22',
-      },
-      ticks: {
-        color: '#6B7280',
-        font: {
-          size: 11,
-        },
-        callback: function(value) {
-          return `$${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-        }
-      },
-    },
-  },
-  layout: {
-    padding: {
-      left: window?.innerWidth < 768 ? 10 : 20,
-      right: window?.innerWidth < 768 ? 10 : 20,
-    }
-  },
-}
-
-export const lineChartOptions: ChartOptions<'line'> = {
-  responsive: true,
-  maintainAspectRatio: false,
-  interaction: {
-    mode: 'nearest',
-    axis: 'x',
-    intersect: false
-  },
-  plugins: {
-    legend: {
-      position: 'top',
-      align: 'start',
-      labels: {
-        color: '#fff',
-        padding: 20,
-        usePointStyle: true,
-        pointStyle: 'circle',
-        font: { 
-          size: 12,
-          family: 'Inter',
-        }
-      }
-    },
-    tooltip: {
-      backgroundColor: '#1C1D22',
-      padding: window?.innerWidth < 768 ? 16 : 12,
-      cornerRadius: 8,
-      bodyFont: {
-        size: 14,
-        family: 'Inter',
-      },
-      callbacks: {
-        label: function(context) {
-          return `${context.dataset.label}: $${context.raw?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-        }
-      },
-      interaction: {
-        intersect: false,
-        mode: 'nearest',
-      },
-    }
-  },
-  scales: {
-    x: {
-      grid: {
-        color: '#1C1D22',
-      },
-      ticks: { 
-        color: '#6B7280',
-        maxRotation: 45,
-        minRotation: 45,
-        font: {
-          size: 11,
-        },
-      }
-    },
-    y: {
-      grid: {
-        color: '#1C1D22',
-      },
-      ticks: { 
-        color: '#6B7280',
-        font: {
-          size: 11,
-        },
-        callback: function(value) {
-          return `$${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-        }
-      }
-    }
-  },
-  layout: {
-    padding: {
-      left: window?.innerWidth < 768 ? 10 : 20,
-      right: window?.innerWidth < 768 ? 10 : 20,
-    }
-  },
-}
-
-export const doughnutOptions: ChartOptions<'doughnut'> = {
-  responsive: true,
-  maintainAspectRatio: false,
-  cutout: '75%',
-  plugins: {
-    legend: {
-      position: window?.innerWidth < 768 ? 'bottom' : 'right',
-      align: 'center',
-      labels: {
-        color: '#fff',
-        padding: 20,
-        usePointStyle: true,
-        pointStyle: 'circle',
-        font: {
-          size: 12,
+      tooltip: {
+        backgroundColor: colors.tooltipBackground,
+        titleColor: colors.tooltipText,
+        bodyColor: colors.tooltipText,
+        padding: typeof window !== 'undefined' && window.innerWidth < 768 ? 16 : 12,
+        cornerRadius: 8,
+        bodyFont: {
+          size: 14,
           family: 'Inter',
         },
-        generateLabels: (chart) => {
-          const data = chart.data.datasets[0].data as number[];
-          const total = data.reduce((a, b) => a + b, 0);
-          return chart.data.labels?.map((label, i) => ({
-            text: `${label} - $${data[i]?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} (${Math.round((data[i] / total) * 100)}%)`,
-            fillStyle: chart.data.datasets[0].backgroundColor?.[i],
-            hidden: false,
-            lineCap: undefined,
-            lineDash: undefined,
-            lineDashOffset: undefined,
-            lineJoin: undefined,
-            lineWidth: undefined,
-            strokeStyle: undefined,
-            pointStyle: 'circle',
-            rotation: undefined,
-          })) || []
+        callbacks: {
+          label: function(context) {
+            return `$${context.raw?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+          }
         }
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: colors.textColor,
+          maxRotation: 45,
+          minRotation: 45,
+          font: {
+            size: 11,
+          },
+        },
+      },
+      y: {
+        grid: {
+          color: colors.gridColor,
+        },
+        ticks: {
+          color: colors.textColor,
+          font: {
+            size: 11,
+          },
+          callback: function(value) {
+            return `$${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+          }
+        },
+      },
+    },
+    layout: {
+      padding: {
+        left: typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 20,
+        right: typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 20,
+      }
+    },
+  }
+
+  const lineChartOptions: ChartOptions<'line'> = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: defaultOptions.scales as ChartOptions<'line'>['scales'],
+    layout: defaultOptions.layout as ChartOptions<'line'>['layout'],
+    plugins: {
+      tooltip: {
+        backgroundColor: colors.tooltipBackground,
+        titleColor: colors.tooltipText,
+        bodyColor: colors.tooltipText,
+        padding: typeof window !== 'undefined' && window.innerWidth < 768 ? 16 : 12,
+        cornerRadius: 8,
+        bodyFont: {
+          size: 14,
+          family: 'Inter',
+        },
+        callbacks: {
+          label: function(context) {
+            return `$${context.raw?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+          }
+        }
+      },
+      legend: {
+        position: 'top',
+        align: 'start',
+        labels: {
+          color: colors.textColor,
+          padding: 20,
+          usePointStyle: true,
+          pointStyle: 'circle',
+          font: { 
+            size: 12,
+            family: 'Inter',
+          }
+        }
+      },
+    }
+  }
+
+  const doughnutOptions: ChartOptions<'doughnut'> = {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '75%',
+    plugins: {
+      legend: {
+        position: typeof window !== 'undefined' && window.innerWidth < 768 ? 'bottom' : 'right',
+        align: 'center',
+        labels: {
+          color: colors.textColor,
+          padding: 20,
+          usePointStyle: true,
+          pointStyle: 'circle',
+          font: {
+            size: 12,
+            family: 'Inter',
+          },
+        }
+      },
+      tooltip: {
+        backgroundColor: colors.tooltipBackground,
+        titleColor: colors.tooltipText,
+        bodyColor: colors.tooltipText,
+        padding: 12,
+        cornerRadius: 8,
       }
     }
   }
+
+  return { defaultOptions, lineChartOptions, doughnutOptions }
 } 
