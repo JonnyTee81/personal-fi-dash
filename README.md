@@ -2,7 +2,7 @@
 
 A modern wealth management and financial tracking dashboard built with Next.js and TypeScript. Agora Wealth provides comprehensive financial visualization and management tools including net worth tracking, budget management, bill tracking, and financial goal setting.
 
-![Agora Wealth Dashboard](public/dashboard-preview.png)
+![Agora Wealth Dashboard](./img/dashboard01.png)
 
 ## Features
 
