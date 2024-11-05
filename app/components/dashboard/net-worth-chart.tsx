@@ -12,10 +12,38 @@ export function NetWorthChart() {
 
   const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   
-  // Generate sample data with assets and liabilities
+  // Generate sample data with assets and liabilities including mortgage
   const generateTrendData = () => {
-    const assets = [280000, 282000, 285000, 288000, 290000, 291000, 292000, 293000, 293500, 293800, 294000, 293200]
-    const liabilities = [16000, 15800, 15500, 15200, 15000, 14800, 14600, 14400, 14200, 14000, 13900, 14822]
+    const assets = [
+      780000, // House: 650k, Investments: 100k, Cash: 30k
+      782000,
+      785000,
+      788000,
+      790000,
+      791000,
+      792000,
+      793000,
+      793500,
+      793800,
+      794000,
+      793200
+    ]
+    
+    const liabilities = [
+      520000, // Mortgage: 510k, Other Debts: 10k
+      518500,
+      517000,
+      515500,
+      514000,
+      512500,
+      511000,
+      509500,
+      508000,
+      506500,
+      505000,
+      503500
+    ]
+    
     const netWorth = assets.map((asset, i) => asset - liabilities[i])
     
     return { assets, liabilities, netWorth }
@@ -87,7 +115,7 @@ export function NetWorthChart() {
           color: colors.textColor,
           callback: function(value: string | number) {
             if (typeof value === 'number') {
-              return `$${value.toLocaleString()}`
+              return `$${(value/1000).toFixed(0)}k`
             }
             return value
           }
@@ -99,20 +127,20 @@ export function NetWorthChart() {
   const metrics = [
     {
       label: "YTD Change",
-      value: "+$13,200",
-      percentage: "+4.7%",
+      value: "+$29,700",
+      percentage: "+11.4%",
       trend: "up"
     },
     {
       label: "Monthly Change",
-      value: "-$800",
-      percentage: "-0.3%",
+      value: "-$1,800",
+      percentage: "-0.6%",
       trend: "down"
     },
     {
       label: "Average Growth",
-      value: "$1,100/mo",
-      percentage: "+0.4%",
+      value: "$2,475/mo",
+      percentage: "+0.9%",
       trend: "up"
     }
   ]

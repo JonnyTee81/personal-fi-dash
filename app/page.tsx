@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { StatsCard } from "@/components/dashboard/stats-card"
 import { Notifications } from "@/components/dashboard/notifications"
 
-// Dynamically import the IncomeSources component to avoid SSR issues with Chart.js
+// Dynamically import components that use Chart.js to avoid SSR issues
 const IncomeSources = dynamic(
   () => import('@/components/dashboard/income-sources').then(mod => mod.IncomeSources),
   { ssr: false }
@@ -23,6 +23,11 @@ const IncomeExpensesChart = dynamic(
   { ssr: false }
 )
 
+const NetWorthChart = dynamic(
+  () => import('@/components/dashboard/net-worth-chart').then(mod => mod.NetWorthChart),
+  { ssr: false }
+)
+
 import { IncomeGoal } from "@/components/dashboard/income-goal"
 
 export default function Home() {
@@ -31,9 +36,9 @@ export default function Home() {
       {/* Header */}
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
-          <h1 className="text-xl font-light text-foreground">Personal Finance Tracker</h1>
+          <h1 className="text-xl font-light text-foreground">October 2024</h1>
           <div className="flex items-baseline gap-2">
-            <h2 className="text-2xl font-bold text-foreground">Available Balance</h2>
+            <h2 className="text-2xl font-bold text-foreground">Available Cash Balance</h2>
             <span className="text-3xl font-bold text-primary">$14,822</span>
           </div>
         </div>
@@ -46,7 +51,7 @@ export default function Home() {
           <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-start">
             <div className="text-right">
               <p className="text-sm text-foreground">Simon K. Jimmy</p>
-              <p className="text-xs text-muted-foreground">Mortgage consultant</p>
+              <p className="text-xs text-muted-foreground">Financial Dashboard</p>
             </div>
             <div className="w-10 h-10 rounded-full bg-accent"></div>
           </div>
@@ -64,10 +69,15 @@ export default function Home() {
           />
         </div>
         <div className="col-span-1 md:col-span-4">
-          <StatsCard title="Spendings" value="9,228" />
+          <StatsCard title="Income" value="24,050" />
         </div>
         <div className="col-span-1 md:col-span-4">
-          <StatsCard title="Income" value="24,050" />
+          <StatsCard title="Spending" value="9,228" />
+        </div>
+
+        {/* Net Worth Trend */}
+        <div className="col-span-1 md:col-span-12">
+          <NetWorthChart />
         </div>
 
         {/* First row of charts */}

@@ -23,6 +23,7 @@ const navigation = [
   { name: 'Bills', href: '/bills', icon: Receipt },
   { name: 'Goals', href: '/goals', icon: Target },
   { name: 'Budget', href: '/budget', icon: Wallet },
+  { name: 'Transactions', href: '/transactions', icon: Receipt },
 ]
 
 const bottomNavigation = [
