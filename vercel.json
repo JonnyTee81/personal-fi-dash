@@ -1,1 +1,11 @@
- 
+{
+  "version": 2,
+  "buildCommand": "next build",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "regions": ["iad1"],
+  "public": false,
+  "github": {
+    "silent": true
+  }
+} 
