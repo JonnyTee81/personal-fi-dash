@@ -65,7 +65,9 @@ export default function Home() {
             title="Total Net Worth" 
             value="278,378" 
             trend={12.5}
-            className="bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53]"
+            timeframe="30-Day"
+            className="bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53] text-zinc-750"
+            cardType="net-worth"
           />
         </div>
         <div className="col-span-1 md:col-span-3">
@@ -73,6 +75,7 @@ export default function Home() {
             title="Cash Available" 
             value="14,822"
             trend={-2.3}
+            timeframe="7-Day"
           />
         </div>
         <div className="col-span-1 md:col-span-3">
@@ -80,6 +83,7 @@ export default function Home() {
             title="Credit Card Usage" 
             value="2,190"
             trend={-15.4}
+            timeframe="30-Day"
             description="32% of limit"
           />
         </div>
@@ -88,6 +92,7 @@ export default function Home() {
             title="Investment Portfolio" 
             value="122,500"
             trend={8.7}
+            timeframe="7-Day"
             description="Stocks & ETFs"
           />
         </div>
@@ -106,16 +111,6 @@ export default function Home() {
         </div>
         <div className="col-span-1 md:col-span-4">
           <Notifications />
-        </div>
-
-        {/* Income & Expenses Trend */}
-        <div className="col-span-1 md:col-span-8">
-          <IncomeExpensesChart />
-        </div>
-
-        {/* Assets Breakdown */}
-        <div className="col-span-1 md:col-span-4">
-          <AssetsChart />
         </div>
       </div>
     </div>
