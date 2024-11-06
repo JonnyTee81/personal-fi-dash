@@ -1,7 +1,7 @@
 'use client'
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Pie } from "react-chartjs-2"
+import { Doughnut } from "react-chartjs-2"
 import { type ChartData } from "@/lib/chart-setup"
 import { useThemeColors } from "@/hooks/use-theme-colors"
 import { createChartOptions } from "@/lib/chart-setup"
@@ -10,7 +10,7 @@ export function MonthlySpending() {
   const colors = useThemeColors()
   const { doughnutOptions } = createChartOptions(colors)
 
-  const data: ChartData<'pie'> = {
+  const data: ChartData<'doughnut'> = {
     labels: [
       'Housing',
       'Transportation',
@@ -51,7 +51,7 @@ export function MonthlySpending() {
 
   const totalSpending = data.datasets[0].data.reduce((a, b) => a + b, 0)
 
-  const options = {
+  const customOptions = {
     ...doughnutOptions,
     plugins: {
       ...doughnutOptions.plugins,
@@ -75,7 +75,7 @@ export function MonthlySpending() {
       </CardHeader>
       <CardContent>
         <div className="h-[400px] flex items-center">
-          <Pie data={data} options={options} />
+        <Doughnut data={data} options={customOptions} />
         </div>
       </CardContent>
     </Card>
