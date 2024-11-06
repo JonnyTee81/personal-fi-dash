@@ -1,20 +1,15 @@
 import dynamic from 'next/dynamic'
 import { StatsCard } from "@/components/dashboard/stats-card"
 import { Notifications } from "@/components/dashboard/notifications"
-
-// Dynamically import components that use Chart.js to avoid SSR issues
-const IncomeSources = dynamic(
-  () => import('@/components/dashboard/income-sources').then(mod => mod.IncomeSources),
+import Image from 'next/image'
+// Dynamically import chart components
+const NetWorthChart = dynamic(
+  () => import('@/components/dashboard/net-worth-chart').then(mod => mod.NetWorthChart),
   { ssr: false }
 )
 
-const SpendingBreakdown = dynamic(
-  () => import('@/components/dashboard/spending-breakdown').then(mod => mod.SpendingBreakdown),
-  { ssr: false }
-)
-
-const AssetsChart = dynamic(
-  () => import('@/components/dashboard/assets-chart').then(mod => mod.AssetsChart),
+const MonthlyComparison = dynamic(
+  () => import('@/components/dashboard/monthly-comparison').then(mod => mod.MonthlyComparison),
   { ssr: false }
 )
 
@@ -23,12 +18,15 @@ const IncomeExpensesChart = dynamic(
   { ssr: false }
 )
 
-const NetWorthChart = dynamic(
-  () => import('@/components/dashboard/net-worth-chart').then(mod => mod.NetWorthChart),
+const AssetsChart = dynamic(
+  () => import('@/components/dashboard/assets-chart').then(mod => mod.AssetsChart),
   { ssr: false }
 )
 
-import { IncomeGoal } from "@/components/dashboard/income-goal"
+const MonthlySpending = dynamic(
+  () => import('@/components/dashboard/monthly-spending').then(mod => mod.MonthlySpending),
+  { ssr: false }
+)
 
 export default function Home() {
   return (
@@ -36,10 +34,9 @@ export default function Home() {
       {/* Header */}
       <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
-          <h1 className="text-xl font-light text-foreground">October 2024</h1>
+          <h1 className="text-xl font-light text-foreground">March 2024</h1>
           <div className="flex items-baseline gap-2">
-            <h2 className="text-2xl font-bold text-foreground">Available Cash Balance</h2>
-            <span className="text-3xl font-bold text-primary">$14,822</span>
+            <h2 className="text-2xl font-bold text-foreground">Dashboard Overview</h2>
           </div>
         </div>
         
@@ -53,7 +50,9 @@ export default function Home() {
               <p className="text-sm text-foreground">Simon K. Jimmy</p>
               <p className="text-xs text-muted-foreground">Financial Dashboard</p>
             </div>
-            <div className="w-10 h-10 rounded-full bg-accent"></div>
+            <div className="w-10 h-10 rounded-full bg-accent">
+              <Image src="/img/old-jonny-man2.jpeg" alt="User Avatar" width={40} height={40} className="object-cover" />
+            </div>
           </div>
         </div>
       </header>
@@ -61,45 +60,57 @@ export default function Home() {
       {/* Main Grid */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         {/* Stats Cards */}
-        <div className="col-span-1 md:col-span-4">
+        <div className="col-span-1 md:col-span-3">
           <StatsCard 
             title="Total Net Worth" 
             value="278,378" 
-            className="bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53]"
+            trend={12.5}
+            timeframe="30-Day"
+            className="bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53] text-zinc-750"
+            cardType="net-worth"
           />
         </div>
-        <div className="col-span-1 md:col-span-4">
-          <StatsCard title="Income" value="24,050" />
+        <div className="col-span-1 md:col-span-3">
+          <StatsCard 
+            title="Cash Available" 
+            value="14,822"
+            trend={-2.3}
+            timeframe="7-Day"
+          />
         </div>
-        <div className="col-span-1 md:col-span-4">
-          <StatsCard title="Spending" value="9,228" />
+        <div className="col-span-1 md:col-span-3">
+          <StatsCard 
+            title="Credit Card Usage" 
+            value="2,190"
+            trend={-15.4}
+            timeframe="30-Day"
+            description="32% of limit"
+          />
+        </div>
+        <div className="col-span-1 md:col-span-3">
+          <StatsCard 
+            title="Investment Portfolio" 
+            value="122,500"
+            trend={8.7}
+            timeframe="7-Day"
+            description="Stocks & ETFs"
+          />
         </div>
 
-        {/* Net Worth Trend */}
-        <div className="col-span-1 md:col-span-12">
+        {/* Net Worth Chart and Monthly Spending */}
+        <div className="col-span-1 md:col-span-8">
           <NetWorthChart />
         </div>
-
-        {/* First row of charts */}
-        <div className="col-span-1 md:col-span-6">
-          <IncomeSources />
-        </div>
-        <div className="col-span-1 md:col-span-6">
-          <SpendingBreakdown />
+        <div className="col-span-1 md:col-span-4">
+          <MonthlySpending />
         </div>
 
-        {/* Second row */}
+        {/* Monthly Comparison and Notifications */}
         <div className="col-span-1 md:col-span-8">
-          <IncomeExpensesChart />
+          <MonthlyComparison />
         </div>
-        <div className="col-span-1 md:col-span-4 flex flex-col gap-6">
-          <IncomeGoal />
+        <div className="col-span-1 md:col-span-4">
           <Notifications />
-        </div>
-
-        {/* Third row */}
-        <div className="col-span-1 md:col-span-6">
-          <AssetsChart />
         </div>
       </div>
     </div>
