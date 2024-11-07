@@ -6,6 +6,8 @@ import { AccountItem } from "./account-item"
 
 interface AccountGroup {
   name: string
+  totalBalance: number
+  totalPercentChange: number
   accounts: {
     name: string
     balance: number
@@ -17,6 +19,8 @@ interface AccountGroup {
 const accountGroups: AccountGroup[] = [
   {
     name: "Cash",
+    totalBalance: 14822,
+    totalPercentChange: -0.5,
     accounts: [
       {
         name: "Checking Account",
@@ -34,6 +38,8 @@ const accountGroups: AccountGroup[] = [
   },
   {
     name: "Portfolio",
+    totalBalance: 122500,
+    totalPercentChange: 7.5,
     accounts: [
       {
         name: "Investment Account",
@@ -51,6 +57,8 @@ const accountGroups: AccountGroup[] = [
   },
   {
     name: "Property",
+    totalBalance: 650000,
+    totalPercentChange: 3.2,
     accounts: [
       {
         name: "Primary Residence",
@@ -62,6 +70,8 @@ const accountGroups: AccountGroup[] = [
   },
   {
     name: "Credit Cards",
+    totalBalance: 2770,
+    totalPercentChange: -19.0,
     accounts: [
       {
         name: "Main Credit Card",
@@ -90,14 +100,24 @@ export function AccountsNav() {
   }
 
   return (
-    <div className="space-y-1">
+    <div className="space-y-1 ">
       {accountGroups.map((group) => (
         <div key={group.name}>
           <button
             onClick={() => toggleGroup(group.name)}
-            className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium hover:bg-accent/50 rounded-lg transition-colors"
+            className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium hover:bg-accent/50 rounded-lg transition-colors text-left"
           >
-            <span>{group.name}</span>
+            <div className="flex items-center gap-2">
+              <div>
+                <strong className="uppercase block">{group.name}</strong>
+                <span className="text-xs text-muted-foreground px-2">
+                  ${group.totalBalance.toLocaleString()}
+              </span>
+                <span className={`text-xs ${group.totalPercentChange >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                {group.totalPercentChange >= 0 ? '+' : ''}{group.totalPercentChange}%
+              </span>
+              </div>
+            </div>
             {expandedGroups[group.name] ? (
               <ChevronDown className="h-4 w-4" />
             ) : (
@@ -105,7 +125,7 @@ export function AccountsNav() {
             )}
           </button>
           {expandedGroups[group.name] && (
-            <div className="mt-1 ml-2 space-y-1">
+            <div className="mt-1 ml-2 space-y-1" style={{ width: 'calc(100% - 1rem)' }}>
               {group.accounts.map((account) => (
                 <AccountItem
                   key={account.name}

@@ -36,7 +36,7 @@ function SidebarContent() {
   const pathname = usePathname()
   
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full w-full">
       {/* Logo and Theme Toggle */}
       <div className="p-6 flex items-center justify-between border-b border-border">
         <Logo />
@@ -65,8 +65,8 @@ function SidebarContent() {
             )
           })}
         </div>
-        <div className="px-3 py-2">
-          <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+        <div className="px-3 pb-2 pt-10">
+          <h2 className="mb-2 px-0 text-lg font-semibold tracking-tight">
             Accounts
           </h2>
           <AccountsNav />
