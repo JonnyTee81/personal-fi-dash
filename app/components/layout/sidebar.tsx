@@ -44,7 +44,7 @@ function SidebarContent() {
       </div>
 
       {/* Main Navigation */}
-      <nav className="flex-1 px-4 py-4">
+      <nav className="flex-1 px-4 py-4 overflow-y-auto">
         <div className="space-y-1">
           {navigation.map((item) => {
             const isActive = pathname === item.href
@@ -86,8 +86,6 @@ function SidebarContent() {
           </Link>
         ))}
       </div>
-
-      
     </div>
   )
 }
@@ -108,7 +106,7 @@ export function Sidebar() {
       </Sheet>
 
       {/* Desktop Sidebar */}
-      <div className="hidden md:flex fixed left-0 top-0 h-screen w-64 bg-card border-r border-border">
+      <div className="hidden md:flex fixed left-0 top-0 h-screen w-64 bg-card border-r border-border overflow-y-auto">
         <SidebarContent />
       </div>
     </>
