@@ -16,6 +16,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Logo } from "@/components/logo"
+import { AccountsNav } from "./accounts-nav"
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
@@ -64,6 +65,12 @@ function SidebarContent() {
             )
           })}
         </div>
+        <div className="px-3 py-2">
+          <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+            Accounts
+          </h2>
+          <AccountsNav />
+        </div>
       </nav>
 
       {/* Bottom Navigation */}
@@ -79,6 +86,8 @@ function SidebarContent() {
           </Link>
         ))}
       </div>
+
+      
     </div>
   )
 }
