@@ -13,6 +13,7 @@ import {
   Legend,
   ChartOptions,
   ChartData,
+  Filler,
 } from 'chart.js'
 
 // Register ChartJS components
@@ -25,7 +26,8 @@ ChartJS.register(
   ArcElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 )
 
 // Export types

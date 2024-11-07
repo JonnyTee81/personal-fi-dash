@@ -15,18 +15,18 @@ export function NetWorthChart() {
   // Generate sample data with assets and liabilities including mortgage
   const generateTrendData = () => {
     const assets = [
-      780000, // House: 650k, Investments: 100k, Cash: 30k
-      782000,
+      680000, // House: 650k, Investments: 100k, Cash: 30k
+      702000,
       785000,
-      788000,
+      768000,
       790000,
-      791000,
-      792000,
-      793000,
+      781000,
+      782000,
+      773000,
       793500,
-      793800,
+      790800,
       794000,
-      793200
+      789200
     ]
     
     const liabilities = [
