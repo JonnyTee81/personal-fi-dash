@@ -33,9 +33,9 @@ export function InvestmentPerformance() {
 
   const performanceMetrics = [
     { label: 'YTD Return', value: '8.5%', trend: 1.2, color: 'text-green-500' },
-    { label: 'Alpha', value: '1.3%', trend: 0.2, color: 'text-blue-500' },
-    { label: 'Beta', value: '0.92', trend: -0.05, color: 'text-purple-500' },
-    { label: 'Sharpe Ratio', value: '1.8', trend: 0.3, color: 'text-yellow-500' },
+    { label: '90 Day Return', value: '1.3%', trend: 0.2, color: 'text-blue-500' },
+    { label: '60 Day Return', value: '0.92', trend: -0.05, color: 'text-purple-500' },
+    { label: '30 Day Return', value: '1.8', trend: 0.3, color: 'text-yellow-500' },
   ]
 
   return (

@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic'
 import { StatsCard } from "@/components/tiles/stats-card"
 import { Notifications } from "@/components/dashboard/notifications"
-// import { FinancialRatios } from "@/components/dashboard/financial-ratios"
 import { PlannedCashFlow } from "@/components/dashboard/planned-cash-flow"
 import Image from 'next/image'
+import { InvestmentPerformance } from "@/components/dashboard/investment-performance"
 // Dynamically import chart components
 const NetWorthChart = dynamic(
   () => import('@/components/dashboard/net-worth-chart').then(mod => mod.NetWorthChart),
@@ -99,23 +99,28 @@ export default function Home() {
           />
         </div>
 
-        {/* Net Worth Chart and Monthly Spending */}
-        <div className="col-span-1 md:col-span-4">
-          <MonthlyComparison />
-        </div>
-        <div className="col-span-1 md:col-span-4">
-          <PlannedCashFlow />
+        {/* Investment Performance */}
+        <div className="col-span-1 md:col-span-8">
+          <InvestmentPerformance />
         </div>
         <div className="col-span-1 md:col-span-4">
           <Notifications />
         </div>
+        {/* Net Worth Chart and Monthly Spending */}
+        <div className="col-span-1 md:col-span-4">
+          <MonthlyComparison />
+        </div>
+        <div className="col-span-1 md:col-span-8">
+          <PlannedCashFlow />
+        </div>
+        
 
         {/* Monthly Comparison and Notifications */}
         <div className="col-span-1 md:col-span-8">
-        <NetWorthChart />
+          <NetWorthChart />
         </div>
         <div className="col-span-1 md:col-span-4">
-        <MonthlySpending />
+          <MonthlySpending />
         </div>
       </div>
     </div>

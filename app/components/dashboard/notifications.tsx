@@ -37,6 +37,16 @@ export function Notifications() {
           type="info"
           icon={<Target className="w-5 h-5 text-purple-500" />}
         />
+        <NotificationCard
+          message="Your credit card payment is due in 3 days"
+          type="warning"
+          icon={<AlertTriangle className="w-5 h-5 text-orange-500" />}
+        />
+        <NotificationCard
+          message="You've reached 80% of your shopping budget"
+          type="info"
+          icon={<Info className="w-5 h-5 text-blue-500" />}
+        />
       </CardContent>
     </Card>
   )
