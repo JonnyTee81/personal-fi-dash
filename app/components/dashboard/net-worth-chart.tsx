@@ -2,9 +2,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Line } from "react-chartjs-2"
-import { type ChartData } from "@/lib/chart-setup"
 import { useThemeColors } from "@/hooks/use-theme-colors"
-import { createChartOptions } from "@/lib/chart-setup"
+import { createChartOptions, type ChartData } from "@/lib/chart-setup"
 
 export function NetWorthChart() {
   const colors = useThemeColors()
@@ -62,27 +61,24 @@ export function NetWorthChart() {
         tension: 0.4,
         fill: true,
         borderWidth: 2,
-        pointRadius: 0,
       },
       {
         label: 'Net Worth',
         data: netWorth,
         borderColor: '#6366F1',
-        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+        backgroundColor: 'rgba(99, 102, 241, 0.2)',
         tension: 0.4,
         fill: true,
         borderWidth: 2,
-        pointRadius: 0,
       },
       {
         label: 'Total Liabilities',
         data: liabilities,
         borderColor: '#FF6B6B',
-        backgroundColor: 'rgba(255, 107, 107, 0.1)',
+        backgroundColor: 'rgba(255, 107, 107, 0.2)',
         tension: 0.4,
         fill: true,
         borderWidth: 2,
-        pointRadius: 0,
       },
     ]
   }

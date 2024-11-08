@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic'
-import { StatsCard } from "@/components/dashboard/stats-card"
+import { StatsCard } from "@/components/tiles/stats-card"
 import { Notifications } from "@/components/dashboard/notifications"
+// import { FinancialRatios } from "@/components/dashboard/financial-ratios"
+import { PlannedCashFlow } from "@/components/dashboard/planned-cash-flow"
 import Image from 'next/image'
 // Dynamically import chart components
 const NetWorthChart = dynamic(
@@ -66,7 +68,7 @@ export default function Home() {
             value="278,378" 
             trend={12.5}
             timeframe="30-Day"
-            className="bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53] text-zinc-750"
+            className="bg-gradient-to-r from-[#2d7cc6] to-[#5bff53]"
             cardType="net-worth"
           />
         </div>
@@ -98,19 +100,22 @@ export default function Home() {
         </div>
 
         {/* Net Worth Chart and Monthly Spending */}
-        <div className="col-span-1 md:col-span-8">
-          <NetWorthChart />
+        <div className="col-span-1 md:col-span-4">
+          <MonthlyComparison />
         </div>
         <div className="col-span-1 md:col-span-4">
-          <MonthlySpending />
+          <PlannedCashFlow />
+        </div>
+        <div className="col-span-1 md:col-span-4">
+          <Notifications />
         </div>
 
         {/* Monthly Comparison and Notifications */}
         <div className="col-span-1 md:col-span-8">
-          <MonthlyComparison />
+        <NetWorthChart />
         </div>
         <div className="col-span-1 md:col-span-4">
-          <Notifications />
+        <MonthlySpending />
         </div>
       </div>
     </div>

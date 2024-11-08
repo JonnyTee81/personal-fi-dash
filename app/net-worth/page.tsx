@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import dynamic from 'next/dynamic'
-import { StatsCard } from "@/components/dashboard/stats-card"
+import { StatsCard } from "@/components/tiles/stats-card"
 import { NetWorthTable } from "@/components/dashboard/net-worth-table"
 import { QuickActions } from "@/components/dashboard/quick-actions"
 import { AssetAllocation } from "@/components/dashboard/asset-allocation"
@@ -50,6 +50,7 @@ export default function NetWorthPage() {
             value="278,378" 
             trend={12.5}
             className="bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53]"
+            cardType="net-worth"
           />
         </div>
         <div className="col-span-1 md:col-span-4">

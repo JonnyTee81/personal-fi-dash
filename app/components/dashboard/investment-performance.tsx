@@ -2,9 +2,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Line } from "react-chartjs-2"
-import { type ChartData } from "@/lib/chart-setup"
 import { useThemeColors } from "@/hooks/use-theme-colors"
-import { createChartOptions } from "@/lib/chart-setup"
+import { createChartOptions, type ChartData } from "@/lib/chart-setup"
 import { ArrowUpRight, ArrowDownRight } from "lucide-react"
 
 export function InvestmentPerformance() {

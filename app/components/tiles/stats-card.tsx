@@ -24,7 +24,7 @@ export function StatsCard({
     <div className={`rounded-xl p-6 ${className}`}>
       <h3 className={cn(
         "font-medium text-muted-foreground",
-        cardType === "net-worth" && "text-slate-800"
+        cardType === "net-worth" && "text-slate-700"
       )}>{title}</h3>
       <div className="mt-2 flex items-baseline gap-2">
         <span className={cn(
