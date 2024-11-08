@@ -55,7 +55,7 @@ export function createChartOptions(colors: {
         cornerRadius: 8,
         bodyFont: {
           size: 14,
-          family: 'Inter',
+          family: 'Helvetica',
         },
         callbacks: {
           label: function(context) {
@@ -115,7 +115,7 @@ export function createChartOptions(colors: {
         cornerRadius: 8,
         bodyFont: {
           size: 14,
-          family: 'Inter',
+          family: 'Helvetica',
         },
         callbacks: {
           label: function(context) {
@@ -124,16 +124,16 @@ export function createChartOptions(colors: {
         }
       },
       legend: {
-        position: 'top',
-        align: 'start',
+        position: 'bottom',
+        align: 'end',
         labels: {
           color: colors.textColor,
-          padding: 20,
+          padding: 5,
           usePointStyle: true,
           pointStyle: 'circle',
           font: { 
             size: 12,
-            family: 'Inter',
+            family: 'Helvetica',
           }
         }
       },
@@ -155,7 +155,7 @@ export function createChartOptions(colors: {
           pointStyle: 'circle',
           font: {
             size: 12,
-            family: 'Inter',
+            family: 'Helvetica',
           },
         }
       },

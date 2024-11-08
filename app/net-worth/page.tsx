@@ -93,13 +93,7 @@ export default function NetWorthPage() {
           <AssetsChart />
         </div>
 
-        {/* Asset Allocation and Risk Analysis */}
-        <div className="col-span-1 md:col-span-6">
-          <AssetAllocation />
-        </div>
-        <div className="col-span-1 md:col-span-6">
-          <RiskAnalysis />
-        </div>
+       
 
         {/* Retirement and Tax Analysis */}
         <div className="col-span-1 md:col-span-8">

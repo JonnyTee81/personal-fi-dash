@@ -11,6 +11,7 @@ import {
   Wallet,
   Settings,
   HelpCircle,
+  ChartNoAxesCombined,
   Menu
 } from 'lucide-react'
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -20,11 +21,12 @@ import { AccountsNav } from "./accounts-nav"
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
-  { name: 'Net Worth', href: '/net-worth', icon: PieChart },
+  { name: 'Investments', href: '/investments', icon: ChartNoAxesCombined },
   { name: 'Bills', href: '/bills', icon: Receipt },
   { name: 'Goals', href: '/goals', icon: Target },
   { name: 'Budget', href: '/budget', icon: Wallet },
   { name: 'Transactions', href: '/transactions', icon: Receipt },
+  { name: 'Net Worth', href: '/net-worth', icon: PieChart },
 ]
 
 const bottomNavigation = [

@@ -99,13 +99,14 @@ export default function Home() {
           />
         </div>
 
-        {/* Investment Performance */}
-        <div className="col-span-1 md:col-span-8">
-          <InvestmentPerformance />
+{/* Monthly Comparison and Notifications */}
+<div className="col-span-1 md:col-span-8">
+          <NetWorthChart />
         </div>
         <div className="col-span-1 md:col-span-4">
-          <Notifications />
+          <MonthlySpending />
         </div>
+        
         {/* Net Worth Chart and Monthly Spending */}
         <div className="col-span-1 md:col-span-4">
           <MonthlyComparison />
@@ -115,13 +116,7 @@ export default function Home() {
         </div>
         
 
-        {/* Monthly Comparison and Notifications */}
-        <div className="col-span-1 md:col-span-8">
-          <NetWorthChart />
-        </div>
-        <div className="col-span-1 md:col-span-4">
-          <MonthlySpending />
-        </div>
+        
       </div>
     </div>
   )

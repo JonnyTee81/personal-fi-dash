@@ -54,8 +54,8 @@ export function MonthlyComparison() {
       ...defaultOptions.plugins,
       legend: {
         display: true,
-        position: 'top' as const,
-        align: 'start' as const,
+        position: 'bottom' as const,
+        align: 'end' as const,
         labels: {
           color: colors.textColor,
           usePointStyle: true,
@@ -63,7 +63,7 @@ export function MonthlyComparison() {
           padding: 20,
           font: {
             size: 12,
-            family: 'Inter',
+            family: 'Helvetica',
           }
         }
       },
