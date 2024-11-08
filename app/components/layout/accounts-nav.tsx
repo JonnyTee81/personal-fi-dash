@@ -56,19 +56,6 @@ const accountGroups: AccountGroup[] = [
     ]
   },
   {
-    name: "Property",
-    totalBalance: 650000,
-    totalPercentChange: 3.2,
-    accounts: [
-      {
-        name: "Primary Residence",
-        balance: 650000,
-        percentChange: 3.2,
-        sparklineData: [630000, 642000, 650000]
-      }
-    ]
-  },
-  {
     name: "Credit Cards",
     totalBalance: 2770,
     totalPercentChange: -19.0,
@@ -84,6 +71,25 @@ const accountGroups: AccountGroup[] = [
         balance: 580,
         percentChange: -22.7,
         sparklineData: [750, 650, 580]
+      }
+    ]
+  },
+  {
+    name: "Loans",
+    totalBalance: 2770,
+    totalPercentChange: -19.0,
+    accounts: [
+        {
+            name: "Mortgage",
+            balance: 650000,
+            percentChange: -3.2,
+            sparklineData: [630000, 622000, 620000]
+          },
+      {
+        name: "Toyota Loan",
+        balance: 5800,
+        percentChange: -2.7,
+        sparklineData: [5750, 5650, 5580]
       }
     ]
   }

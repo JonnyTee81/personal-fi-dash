@@ -35,15 +35,6 @@ export function GoalsProgress() {
       color: "bg-green-500"
     },
     {
-      name: "Emergency Fund",
-      target: 30000,
-      current: 24050,
-      deadline: "Mar 2024",
-      category: "Savings",
-      icon: <Wallet className="w-5 h-5 text-yellow-500" />,
-      color: "bg-yellow-500"
-    },
-    {
       name: "Student Loan Payoff",
       target: 40000,
       current: 36000,

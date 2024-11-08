@@ -7,6 +7,9 @@ import { Notifications } from "@/components/dashboard/notifications"
 import { PortfolioSummary } from "@/components/dashboard/portfolio-summary"
 import { InvestmentAccounts } from "@/components/dashboard/investment-accounts"
 import { StatsCard } from "@/components/tiles/stats-card"
+import { RetirementProjection } from "@/components/dashboard/retirement-projection"
+import { TaxAnalysis } from "@/components/dashboard/tax-analysis"
+
 export default function Investments() {
   return (
     <div className="min-h-screen bg-background text-foreground p-4 md:p-8">
@@ -20,10 +23,10 @@ export default function Investments() {
         <div className="col-span-1 md:col-span-3">
           <StatsCard 
             title="Total Portfolio Value" 
-            value="278,378" 
+            value="1,278,378" 
             trend={12.5}
             timeframe="30-Day"
-            className="bg-gradient-to-r from-[#2d7cc6] to-[#5bff53]"
+            className="bg-gradient-to-r from-[#622dc6] to-[#53c3ff]"
             cardType="net-worth"
           />
         </div>
@@ -61,14 +64,15 @@ export default function Investments() {
         </div>
 
         {/* Risk Analysis */}
-        <div className="col-span-1 md:col-span-8">
+        <div className="col-span-1 md:col-span-4">
           <RiskAnalysis />
         </div>
-
-        {/* Notifications */}
-        <div className="col-span-1 md:col-span-4">
-          <Notifications />
+        {/* Retirement and Tax Analysis */}
+        <div className="col-span-1 md:col-span-8">
+          <RetirementProjection />
         </div>
+
+
 
         <div className="col-span-1 md:col-span-12">
           <InvestmentAccounts />

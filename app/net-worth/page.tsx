@@ -23,7 +23,7 @@ import { InvestmentScenario } from "@/components/dashboard/investment-scenario"
 import { DebtPayoffStrategy } from "@/components/dashboard/debt-payoff-strategy"
 import { TaxOptimization } from "@/components/dashboard/tax-optimization"
 import { EstatePlanning } from "@/components/dashboard/estate-planning"
-
+import { Notifications } from "@/components/dashboard/notifications"
 const NetWorthChart = dynamic(
     () => import('@/components/dashboard/net-worth-chart').then(mod => mod.NetWorthChart),
     { ssr: false }
@@ -73,11 +73,6 @@ export default function NetWorthPage() {
           <QuickActions />
         </div>
 
-        {/* Investment Performance */}
-        <div className="col-span-1 md:col-span-8">
-          <InvestmentPerformance />
-        </div>
-
         {/* Financial Ratios */}
         <div className="col-span-1 md:col-span-4">
           <FinancialRatios />
@@ -95,13 +90,7 @@ export default function NetWorthPage() {
 
        
 
-        {/* Retirement and Tax Analysis */}
-        <div className="col-span-1 md:col-span-8">
-          <RetirementProjection />
-        </div>
-        <div className="col-span-1 md:col-span-4">
-          <TaxAnalysis />
-        </div>
+        
 
         {/* Historical Data */}
         <div className="col-span-1 md:col-span-12">
@@ -178,16 +167,22 @@ export default function NetWorthPage() {
         <div className="col-span-1 md:col-span-8">
           <InvestmentScenario />
         </div>
-        <div className="col-span-1 md:col-span-4">
-          <DebtPayoffStrategy />
-        </div>
+        
 
         {/* Tax Optimization and Estate Planning */}
         <div className="col-span-1 md:col-span-8">
           <TaxOptimization />
         </div>
+        
+
+                {/* Notifications */}
+                <div className="col-span-1 md:col-span-4">
+          <Notifications />
+        </div>
+
+        
         <div className="col-span-1 md:col-span-4">
-          <EstatePlanning />
+          <TaxAnalysis />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
-import { Home, Briefcase, Wallet, GraduationCap, Car, Plane } from "lucide-react"
+import { Siren, AlignEndHorizontal, Hospital, PiggyBank, AlignStartHorizontal, Plane } from "lucide-react"
 
 interface Category {
   name: string
@@ -9,64 +9,89 @@ interface Category {
   goals: number
   icon: React.ReactNode
   color: string
+  description: string
 }
 
 export function GoalsCategories() {
   const categories: Category[] = [
     {
-      name: "Housing",
-      totalAmount: 100000,
+      name: "Emergency Fund",
+      totalAmount: 50000,
       currentAmount: 45000,
       goals: 1,
-      icon: <Home className="w-5 h-5 text-blue-500" />,
-      color: "bg-blue-500"
+      icon: <Siren className="w-5 h-5 text-blue-500" />,
+      color: "bg-blue-500",
+      description: "6 Months"
     },
     {
-      name: "Investment",
-      totalAmount: 50000,
-      currentAmount: 22500,
-      goals: 1,
-      icon: <Briefcase className="w-5 h-5 text-green-500" />,
-      color: "bg-green-500"
-    },
-    {
-      name: "Savings",
+      name: "HSA",
       totalAmount: 30000,
       currentAmount: 24050,
       goals: 1,
-      icon: <Wallet className="w-5 h-5 text-yellow-500" />,
-      color: "bg-yellow-500"
+      icon: <Hospital className="w-5 h-5 text-yellow-500" />,
+      color: "bg-yellow-500",
+      description: ""
     },
     {
-      name: "Debt",
-      totalAmount: 40000,
-      currentAmount: 36000,
+      name: "401(k) Match",
+      totalAmount: 6000,
+      currentAmount: 2500,
       goals: 1,
-      icon: <GraduationCap className="w-5 h-5 text-red-500" />,
-      color: "bg-red-500"
+      icon: <AlignEndHorizontal className="w-5 h-5 text-purple-500" />,
+      color: "text-purple-500",
+      description: "Sam"
     },
     {
-      name: "Vehicle",
-      totalAmount: 35000,
+      name: "401(k) Match",
+      totalAmount: 6000,
+      currentAmount: 1500,
+      goals: 1,
+      icon: <AlignEndHorizontal className="w-5 h-5 text-green-500" />,
+      color: "bg-green-500",
+      description: "Simon (Walmart)"
+    },
+    {
+      name: "IRA",
+      totalAmount: 7000,
+      currentAmount: 3000,
+      goals: 1,
+      icon: <PiggyBank className="w-5 h-5 text-purple-500" />,
+      color: "text-purple-500",
+      description: "Sam"
+    },
+    {
+      name: "IRA",
+      totalAmount: 7000,
+      currentAmount: 3000,
+      goals: 1,
+      icon: <PiggyBank className="w-5 h-5 text-green-500" />,
+      color: "text-green-500",
+      description: "Simon"
+    },
+    {
+      name: "401(k) Full",
+      totalAmount: 23000,
       currentAmount: 12500,
       goals: 1,
-      icon: <Car className="w-5 h-5 text-purple-500" />,
-      color: "bg-purple-500"
+      icon: <AlignStartHorizontal className="w-5 h-5 text-purple-500" />,
+      color: "bg-purple-500",
+      description: "Sam"
     },
     {
-      name: "Travel",
-      totalAmount: 8000,
-      currentAmount: 3200,
+      name: "401(k) Full",
+      totalAmount: 23000,
+      currentAmount: 13500,
       goals: 1,
-      icon: <Plane className="w-5 h-5 text-orange-500" />,
-      color: "bg-orange-500"
-    }
+      icon: <AlignStartHorizontal className="w-5 h-5 text-green-500" />,
+      color: "text-green-500",
+      description: "Simon"
+    },
   ]
 
   return (
     <Card className="bg-card border-0">
       <CardHeader>
-        <CardTitle>Goal Categories</CardTitle>
+        <CardTitle>Savings Categories - 2024</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -78,7 +103,7 @@ export function GoalsCategories() {
                   <div>
                     <p className="font-medium">{category.name}</p>
                     <p className="text-sm text-muted-foreground">
-                      {category.goals} {category.goals === 1 ? 'goal' : 'goals'}
+                      {category.description}
                     </p>
                   </div>
                 </div>

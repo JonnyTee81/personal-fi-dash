@@ -22,11 +22,11 @@ import { AccountsNav } from "./accounts-nav"
 const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
   { name: 'Investments', href: '/investments', icon: ChartNoAxesCombined },
-  { name: 'Bills', href: '/bills', icon: Receipt },
   { name: 'Goals', href: '/goals', icon: Target },
   { name: 'Budget', href: '/budget', icon: Wallet },
   { name: 'Transactions', href: '/transactions', icon: Receipt },
   { name: 'Net Worth', href: '/net-worth', icon: PieChart },
+  { name: 'Bills', href: '/bills', icon: Receipt },
 ]
 
 const bottomNavigation = [
