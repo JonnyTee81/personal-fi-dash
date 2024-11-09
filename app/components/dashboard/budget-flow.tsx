@@ -9,15 +9,15 @@ export function BudgetFlow() {
     ["From", "To", "Amount"],
     // Income Sources
     ["Primary Salary", "Income", 20000],
-    ["Side Business", "Income", 3000],
-    ["Investments", "Income", 1050],
+    ["Side Business", "Income", 300],
+    ["Reimbursements", "Income", 1050],
     
     // Income to Take Home
     ["Income", "Taxes", 5000],
-    ["Income", "Take Home", 19050],
+    ["Income", "Take Home", 15405],
     
     // Take Home to Categories
-    ["Take Home", "Housing", 2200],
+    ["Take Home", "Housing", 5000],
     ["Take Home", "Food", 800],
     ["Take Home", "Transportation", 400],
     ["Take Home", "Utilities", 350],
@@ -25,7 +25,7 @@ export function BudgetFlow() {
     ["Take Home", "Entertainment", 200],
     ["Take Home", "Shopping", 650],
     ["Take Home", "Healthcare", 300],
-    ["Take Home", "Savings", 13870],
+    ["Take Home", "Savings", 1870],
   ]
 
   const options = {
@@ -53,11 +53,11 @@ export function BudgetFlow() {
           '#10B981', // Savings
         ],
         label: {
-          fontName: 'Inter',
+          fontName: 'Helvetica',
           fontSize: 14,
           color: '#fff',
         },
-        nodePadding: 40,
+        nodePadding: 20,
       },
       link: {
         colorMode: 'gradient',
@@ -66,7 +66,7 @@ export function BudgetFlow() {
     },
     tooltip: {
       textStyle: {
-        fontName: 'Inter',
+        fontName: 'Helvetica',
         fontSize: 14,
       }
     },

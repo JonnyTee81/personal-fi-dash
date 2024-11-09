@@ -25,7 +25,7 @@ const navigation = [
   { name: 'Goals', href: '/goals', icon: Target },
   { name: 'Budget', href: '/budget', icon: Wallet },
   { name: 'Transactions', href: '/transactions', icon: Receipt },
-  { name: 'Net Worth', href: '/net-worth', icon: PieChart },
+  // { name: 'Net Worth', href: '/net-worth', icon: PieChart },
   { name: 'Bills', href: '/bills', icon: Receipt },
 ]
 
