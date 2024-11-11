@@ -88,7 +88,7 @@ export function createChartOptions(colors: ThemeColors): {
       cutout: '75%',
       plugins: {
         legend: {
-          position: 'bottom' as const,
+          position: 'right' as const,
           labels: {
             color: colors.textColor,
             padding: 20,
