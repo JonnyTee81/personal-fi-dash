@@ -16,6 +16,7 @@ export type ChartData<T extends 'line' | 'bar' | 'doughnut'> = {
     borderWidth?: number
     borderRadius?: number
     maxBarThickness?: number
+    pointRadius?: number
   }[]
 }
 
@@ -82,13 +83,34 @@ export function createChartOptions(colors: ThemeColors): {
       ...baseOptions,
     },
     doughnutOptions: {
-      ...baseOptions,
+      responsive: true,
+      maintainAspectRatio: false,
       cutout: '75%',
       plugins: {
-        ...baseOptions.plugins,
         legend: {
-          ...baseOptions.plugins.legend,
           position: 'bottom' as const,
+          labels: {
+            color: colors.textColor,
+            padding: 20,
+            usePointStyle: true,
+            pointStyle: 'circle',
+          },
+        },
+        tooltip: {
+          backgroundColor: colors.tooltipBackground,
+          titleColor: colors.tooltipText,
+          bodyColor: colors.tooltipText,
+          borderColor: colors.borderColor,
+          borderWidth: 1,
+          padding: 12,
+        },
+      },
+      scales: {
+        x: {
+          display: false,
+        },
+        y: {
+          display: false,
         },
       },
     },
