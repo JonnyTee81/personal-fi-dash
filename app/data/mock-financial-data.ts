@@ -9,7 +9,8 @@ import {
   Transaction,
   TimeseriesData,
   Security,
-  SecurityHolding
+  SecurityHolding,
+  PlannedCashFlow
 } from '@/types/financial'
 
 // Mock Securities
@@ -287,6 +288,32 @@ export const mockNetWorthTrendData = {
       value: "$2,475/mo",
       percentage: "+0.9%",
       trend: "up"
+    }
+  ]
+}
+
+export const mockPlannedCashFlow: PlannedCashFlow = {
+  items: [
+    {
+      label: "Cash Flow",
+      value: 8456,
+      target: 12654,
+      description: "Income, Reimbursements, etc.",
+      color: "bg-green-500"
+    },
+    {
+      label: "Credit Card Usage",
+      value: 2345,
+      target: 6854,
+      description: "Chase, Amazon, Target, etc.",
+      color: "bg-blue-500"
+    },
+    {
+      label: "Essential Expenses",
+      value: 1234,
+      target: 7564,
+      description: "Mortgage, Utilities, etc.",
+      color: "bg-purple-500"
     }
   ]
 } 

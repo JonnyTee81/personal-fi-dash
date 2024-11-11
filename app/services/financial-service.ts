@@ -7,7 +7,8 @@ import {
   PortfolioSummary,
   NetWorthSummary,
   Transaction,
-  TimeseriesData
+  TimeseriesData,
+  PlannedCashFlow
 } from '@/types/financial'
 
 import {
@@ -20,7 +21,8 @@ import {
   mockStatsData,
   mockSpendingCategories,
   mockMonthlyComparisonData,
-  mockNetWorthTrendData
+  mockNetWorthTrendData,
+  mockPlannedCashFlow
 } from '@/data/mock-financial-data'
 
 export class FinancialService {
@@ -89,6 +91,11 @@ export class FinancialService {
   // Net worth trend methods
   async getNetWorthTrend() {
     return mockNetWorthTrendData
+  }
+
+  // Planned cash flow methods
+  async getPlannedCashFlow(): Promise<PlannedCashFlow> {
+    return mockPlannedCashFlow
   }
 }
 
