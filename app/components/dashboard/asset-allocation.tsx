@@ -43,7 +43,7 @@ export function AssetAllocation() {
         <CardTitle>Asset Allocation</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="h-[300px] flex items-center">
+        <div className="h-[400px] flex items-center">
           <Doughnut data={data} options={customOptions} />
         </div>
       </CardContent>

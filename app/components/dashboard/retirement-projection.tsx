@@ -16,7 +16,7 @@ export function RetirementProjection() {
   const years = Array.from({ length: retirementAge - currentAge + 1 }, (_, i) => currentAge + i)
   
   const data: ChartData<'line'> = {
-    labels: years,
+    labels: years.map(String),
     datasets: [
       {
         label: 'Conservative Growth (6%)',

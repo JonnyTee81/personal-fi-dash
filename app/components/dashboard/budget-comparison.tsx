@@ -9,7 +9,7 @@ import { ArrowUpRight, ArrowDownRight } from "lucide-react"
 
 export function BudgetComparison() {
   const colors = useThemeColors()
-  const { defaultOptions } = createChartOptions(colors)
+  const { barChartOptions } = createChartOptions(colors)
 
   const categories = ['Housing', 'Food', 'Transport', 'Utilities', 'Shopping', 'Entertainment']
   
@@ -32,9 +32,9 @@ export function BudgetComparison() {
   }
 
   const options = {
-    ...defaultOptions,
+    ...barChartOptions,
     plugins: {
-      ...defaultOptions.plugins,
+      ...barChartOptions.plugins,
       legend: {
         display: true,
         position: 'top' as const,
@@ -59,6 +59,7 @@ export function BudgetComparison() {
     }
   }).sort((a, b) => Math.abs(b.change) - Math.abs(a.change)).slice(0, 3)
 
+  console.log(data)
   return (
     <Card className="bg-card border-0">
       <CardHeader>
