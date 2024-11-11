@@ -9,7 +9,7 @@ import { useEffect, useState } from "react"
 import { financialService } from "@/services/financial-service"
 import { formatCurrency } from "@/lib/utils"
 
-export function MonthlyComparison() {
+export function CashFlowMonthlyComparison() {
   const colors = useThemeColors()
   const { barChartOptions } = createChartOptions(colors)
   const [comparisonData, setComparisonData] = useState<any>(null)

@@ -1,20 +1,20 @@
 import dynamic from 'next/dynamic'
 import { StatsCard } from "@/components/tiles/stats-card"
-import { PlannedCashFlow } from "@/components/dashboard/planned-cash-flow"
+import { PlannedCashFlow } from "@/app/components/progress-charts/planned-cash-flow"
 import Image from 'next/image'
 // Dynamically import chart components
 const NetWorthChart = dynamic(
-  () => import('@/components/dashboard/net-worth-chart').then(mod => mod.NetWorthChart),
+  () => import('@/components/line-charts/net-worth-chart').then(mod => mod.NetWorthChart),
   { ssr: false }
 )
 
 const MonthlyComparison = dynamic(
-  () => import('@/components/dashboard/monthly-comparison').then(mod => mod.MonthlyComparison),
+  () => import('@/components/bar-charts/cash-flow-monthly-comparison').then(mod => mod.CashFlowMonthlyComparison),
   { ssr: false }
 )
 
 const MonthlySpending = dynamic(
-  () => import('@/components/dashboard/monthly-spending').then(mod => mod.MonthlySpending),
+  () => import('@/components/pie-charts/monthly-spending').then(mod => mod.MonthlySpending),
   { ssr: false }
 )
 
