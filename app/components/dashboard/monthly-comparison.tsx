@@ -8,7 +8,7 @@ import { createChartOptions } from "@/lib/chart-setup"
 
 export function MonthlyComparison() {
   const colors = useThemeColors()
-  const { defaultOptions } = createChartOptions(colors)
+  const { barChartOptions } = createChartOptions(colors)
 
   const months = ['January', 'February', 'March']
   const income = [21000, 23000, 24050]
@@ -49,9 +49,9 @@ export function MonthlyComparison() {
   }
 
   const options = {
-    ...defaultOptions,
+    ...barChartOptions,
     plugins: {
-      ...defaultOptions.plugins,
+      ...barChartOptions.plugins,
       legend: {
         display: true,
         position: 'bottom' as const,
@@ -68,7 +68,7 @@ export function MonthlyComparison() {
         }
       },
       tooltip: {
-        ...defaultOptions.plugins?.tooltip,
+        ...barChartOptions.plugins?.tooltip,
         callbacks: {
           label: function(context: any) {
             const label = context.dataset.label || ''
@@ -83,9 +83,9 @@ export function MonthlyComparison() {
       }
     },
     scales: {
-      ...defaultOptions.scales,
+      ...barChartOptions.scales,
       x: {
-        ...defaultOptions.scales?.x,
+        ...barChartOptions.scales?.x,
         grid: {
           display: false,
         },
@@ -101,7 +101,7 @@ export function MonthlyComparison() {
         }
       },
       y: {
-        ...defaultOptions.scales?.y,
+        ...barChartOptions.scales?.y,
         grid: {
           color: colors.gridColor,
         },

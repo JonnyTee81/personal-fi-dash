@@ -1,173 +1,96 @@
 'use client'
 
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend,
-  ChartOptions,
-  ChartData,
-  Filler,
-} from 'chart.js'
+import '@/lib/chart-registry'
+import { ChartOptions } from 'chart.js'
+import { ThemeColors } from '@/hooks/use-theme-colors'
 
-// Register ChartJS components
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
-)
+export type ChartData<T extends 'line' | 'bar' | 'doughnut'> = {
+  labels: string[]
+  datasets: {
+    label?: string
+    data: number[]
+    borderColor?: string
+    backgroundColor?: string | string[] | ((context: any) => string)
+    tension?: number
+    fill?: boolean
+    borderWidth?: number
+    borderRadius?: number
+    maxBarThickness?: number
+  }[]
+}
 
-// Export types
-export type { ChartOptions, ChartData }
-
-// Create chart options factory
-export function createChartOptions(colors: {
-  gridColor: string
-  textColor: string
-  tooltipBackground: string
-  tooltipText: string
-}) {
-  const defaultOptions: ChartOptions<'bar'> = {
+export function createChartOptions(colors: ThemeColors): {
+  lineChartOptions: ChartOptions<'line'>
+  barChartOptions: ChartOptions<'bar'>
+  doughnutOptions: ChartOptions<'doughnut'>
+} {
+  const baseOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: false,
-      },
-      tooltip: {
-        backgroundColor: colors.tooltipBackground,
-        titleColor: colors.tooltipText,
-        bodyColor: colors.tooltipText,
-        padding: typeof window !== 'undefined' && window.innerWidth < 768 ? 16 : 12,
-        cornerRadius: 8,
-        bodyFont: {
-          size: 14,
-          family: 'Helvetica',
-        },
-        callbacks: {
-          label: function(context) {
-            return `$${context.raw?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-          }
-        }
-      },
-    },
-    scales: {
-      x: {
-        grid: {
-          display: false,
-        },
-        ticks: {
-          color: colors.textColor,
-          maxRotation: 45,
-          minRotation: 45,
-          font: {
-            size: 11,
-          },
-        },
-      },
-      y: {
-        grid: {
-          color: colors.gridColor,
-        },
-        ticks: {
-          color: colors.textColor,
-          font: {
-            size: 11,
-          },
-          callback: function(value) {
-            return `$${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-          }
-        },
-      },
-    },
-    layout: {
-      padding: {
-        left: typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 20,
-        right: typeof window !== 'undefined' && window.innerWidth < 768 ? 10 : 20,
-      }
-    },
-  }
-
-  const lineChartOptions: ChartOptions<'line'> = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: defaultOptions.scales as ChartOptions<'line'>['scales'],
-    layout: defaultOptions.layout as ChartOptions<'line'>['layout'],
-    plugins: {
-      tooltip: {
-        backgroundColor: colors.tooltipBackground,
-        titleColor: colors.tooltipText,
-        bodyColor: colors.tooltipText,
-        padding: typeof window !== 'undefined' && window.innerWidth < 768 ? 16 : 12,
-        cornerRadius: 8,
-        bodyFont: {
-          size: 14,
-          family: 'Helvetica',
-        },
-        callbacks: {
-          label: function(context) {
-            return `$${context.raw?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-          }
-        }
-      },
-      legend: {
-        position: 'bottom',
-        align: 'end',
-        labels: {
-          color: colors.textColor,
-          padding: 5,
-          usePointStyle: true,
-          pointStyle: 'circle',
-          font: { 
-            size: 12,
-            family: 'Helvetica',
-          }
-        }
-      },
-    }
-  }
-
-  const doughnutOptions: ChartOptions<'doughnut'> = {
-    responsive: true,
-    maintainAspectRatio: false,
-    cutout: '75%',
-    plugins: {
-      legend: {
-        position: typeof window !== 'undefined' && window.innerWidth < 768 ? 'bottom' : 'right',
-        align: 'center',
+        position: 'bottom' as const,
         labels: {
           color: colors.textColor,
           padding: 20,
           usePointStyle: true,
           pointStyle: 'circle',
-          font: {
-            size: 12,
-            family: 'Helvetica',
-          },
-        }
+        },
       },
       tooltip: {
+        mode: 'index' as const,
+        intersect: false,
         backgroundColor: colors.tooltipBackground,
         titleColor: colors.tooltipText,
         bodyColor: colors.tooltipText,
+        borderColor: colors.borderColor,
+        borderWidth: 1,
         padding: 12,
-        cornerRadius: 8,
-      }
-    }
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          color: colors.gridColor,
+          drawBorder: false,
+        },
+        ticks: {
+          color: colors.textColor,
+        },
+      },
+      y: {
+        grid: {
+          color: colors.gridColor,
+          drawBorder: false,
+        },
+        ticks: {
+          color: colors.textColor,
+        },
+      },
+    },
+    interaction: {
+      intersect: false,
+      mode: 'index' as const,
+    },
   }
 
-  return { defaultOptions, lineChartOptions, doughnutOptions }
+  return {
+    lineChartOptions: {
+      ...baseOptions,
+    },
+    barChartOptions: {
+      ...baseOptions,
+    },
+    doughnutOptions: {
+      ...baseOptions,
+      cutout: '75%',
+      plugins: {
+        ...baseOptions.plugins,
+        legend: {
+          ...baseOptions.plugins.legend,
+          position: 'bottom' as const,
+        },
+      },
+    },
+  }
 } 
