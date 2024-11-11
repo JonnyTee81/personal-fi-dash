@@ -1,9 +1,7 @@
 import dynamic from 'next/dynamic'
 import { StatsCard } from "@/components/tiles/stats-card"
-import { Notifications } from "@/components/dashboard/notifications"
 import { PlannedCashFlow } from "@/components/dashboard/planned-cash-flow"
 import Image from 'next/image'
-import { InvestmentPerformance } from "@/components/dashboard/investment-performance"
 // Dynamically import chart components
 const NetWorthChart = dynamic(
   () => import('@/components/dashboard/net-worth-chart').then(mod => mod.NetWorthChart),
@@ -12,16 +10,6 @@ const NetWorthChart = dynamic(
 
 const MonthlyComparison = dynamic(
   () => import('@/components/dashboard/monthly-comparison').then(mod => mod.MonthlyComparison),
-  { ssr: false }
-)
-
-const IncomeExpensesChart = dynamic(
-  () => import('@/components/dashboard/income-expenses-chart').then(mod => mod.IncomeExpensesChart),
-  { ssr: false }
-)
-
-const AssetsChart = dynamic(
-  () => import('@/components/dashboard/assets-chart').then(mod => mod.AssetsChart),
   { ssr: false }
 )
 
@@ -44,8 +32,6 @@ export default function Home() {
         
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full md:w-auto">
           <div className="flex gap-2 w-full sm:w-auto">
-            {/* <button className="flex-1 sm:flex-none px-4 py-2 bg-card rounded-lg text-foreground">Dashboard</button>
-            <button className="flex-1 sm:flex-none px-4 py-2 bg-card rounded-lg text-foreground">Spreadsheet</button> */}
           </div>
           <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-start">
             <div className="text-right">
@@ -99,8 +85,8 @@ export default function Home() {
           />
         </div>
 
-{/* Monthly Comparison and Notifications */}
-<div className="col-span-1 md:col-span-8">
+        {/* Monthly Comparison and Notifications */}
+        <div className="col-span-1 md:col-span-8">
           <NetWorthChart />
         </div>
         <div className="col-span-1 md:col-span-4">
