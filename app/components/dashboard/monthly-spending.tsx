@@ -1,63 +1,63 @@
 'use client'
 
+import '@/lib/chart-registry'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Doughnut } from "react-chartjs-2"
-import { type ChartData } from "@/lib/chart-setup"
 import { useThemeColors } from "@/hooks/use-theme-colors"
-import { createChartOptions } from "@/lib/chart-setup"
+import { createChartOptions, type ChartData } from "@/lib/chart-setup"
+import { useEffect, useState } from "react"
+import { financialService } from "@/services/financial-service"
+import { formatCurrency } from "@/lib/utils"
 
 export function MonthlySpending() {
   const colors = useThemeColors()
   const { doughnutOptions } = createChartOptions(colors)
+  const [spendingData, setSpendingData] = useState<any[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const categories = await financialService.getSpendingCategories()
+        setSpendingData(categories)
+      } catch (error) {
+        console.error('Failed to load spending data:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    loadData()
+  }, [])
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
   const data: ChartData<'doughnut'> = {
-    labels: [
-      'Housing',
-      'Transportation',
-      'Food & Dining',
-      'Utilities',
-      'Healthcare',
-      'Entertainment',
-      'Shopping',
-      'Insurance',
-      'Subscriptions'
-    ],
+    labels: spendingData.map(item => item.category),
     datasets: [{
-      data: [
-        2200,  // Housing (rent/mortgage)
-        400,   // Transportation
-        800,   // Food & Dining
-        350,   // Utilities
-        300,   // Healthcare
-        200,   // Entertainment
-        650,   // Shopping
-        280,   // Insurance
-        150    // Subscriptions
-      ],
-      backgroundColor: [
-        '#FF6B6B',  // Red
-        '#4ECDC4',  // Teal
-        '#45B7D1',  // Blue
-        '#FFD93D',  // Yellow
-        '#8B5CF6',  // Purple
-        '#F97316',  // Orange
-        '#EC4899',  // Pink
-        '#6366F1',  // Indigo
-        '#14F195'   // Green
-      ],
+      data: spendingData.map(item => item.amount),
+      backgroundColor: spendingData.map(item => item.color),
       borderWidth: 0,
     }]
   }
 
-  const totalSpending = data.datasets[0].data.reduce((a, b) => a + b, 0)
+  const totalSpending = spendingData.reduce((sum, item) => sum + item.amount, 0)
 
   const customOptions = {
     ...doughnutOptions,
     plugins: {
       ...doughnutOptions.plugins,
-      legend: {
-        ...doughnutOptions.plugins?.legend,
-        position: 'right' as const,
+      tooltip: {
+        ...doughnutOptions.plugins?.tooltip,
+        callbacks: {
+          label: function(context: any) {
+            const value = context.raw
+            const percentage = ((value / totalSpending) * 100).toFixed(1)
+            return `${context.label}: ${formatCurrency(value)} (${percentage}%)`
+          }
+        }
       }
     }
   }
@@ -69,13 +69,13 @@ export function MonthlySpending() {
           <CardTitle>March Spending</CardTitle>
           <div className="text-right">
             <p className="text-sm text-muted-foreground">Total Spent</p>
-            <p className="text-2xl font-bold text-primary">${totalSpending.toLocaleString()}</p>
+            <p className="text-2xl font-bold text-primary">{formatCurrency(totalSpending)}</p>
           </div>
         </div>
       </CardHeader>
       <CardContent>
         <div className="h-[400px] flex items-center">
-        <Doughnut data={data} options={customOptions} />
+          <Doughnut data={data} options={customOptions} />
         </div>
       </CardContent>
     </Card>

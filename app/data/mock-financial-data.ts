@@ -189,4 +189,104 @@ export const mockMonthlyIncome: TimeseriesData[] = [
   { timestamp: new Date('2024-01-01'), value: 6000 },
   { timestamp: new Date('2024-02-01'), value: 6000 },
   { timestamp: new Date('2024-03-01'), value: 6500 }
-] 
+]
+
+// Add monthly spending categories
+export const mockSpendingCategories = [
+  { category: "Housing", amount: 2200, color: '#FF6B6B' },
+  { category: "Transportation", amount: 400, color: '#4ECDC4' },
+  { category: "Food & Dining", amount: 800, color: '#45B7D1' },
+  { category: "Utilities", amount: 350, color: '#FFD93D' },
+  { category: "Healthcare", amount: 300, color: '#8B5CF6' },
+  { category: "Entertainment", amount: 200, color: '#F97316' },
+  { category: "Shopping", amount: 650, color: '#EC4899' },
+  { category: "Insurance", amount: 280, color: '#6366F1' },
+  { category: "Subscriptions", amount: 150, color: '#14F195' }
+]
+
+// Update stats card data
+export const mockStatsData = {
+  netWorth: {
+    value: 278378,
+    trend: 12.5,
+    timeframe: "30-Day"
+  },
+  cashAvailable: {
+    value: 14822,
+    trend: -2.3,
+    timeframe: "7-Day"
+  },
+  creditUsage: {
+    value: 2190,
+    trend: -15.4,
+    timeframe: "30-Day",
+    description: "32% of limit"
+  },
+  investmentPortfolio: {
+    value: 122500,
+    trend: 8.7,
+    timeframe: "7-Day",
+    description: "Stocks & ETFs"
+  },
+  totalPortfolio: {
+    value: 1278378,
+    trend: 12.5,
+    timeframe: "30-Day"
+  },
+  spx: {
+    value: 14822,
+    trend: -2.3,
+    timeframe: "1-Day"
+  },
+  djia: {
+    value: 2190,
+    trend: -15.4,
+    timeframe: "1-Day"
+  },
+  btc: {
+    value: 71500,
+    trend: 8.7,
+    timeframe: "1-Day"
+  }
+}
+
+// Add monthly comparison data
+export const mockMonthlyComparisonData = {
+  months: ['January', 'February', 'March'],
+  income: [21000, 23000, 24050],
+  spending: [18500, 19200, 20239],
+  net: [2500, 3800, 3811]
+}
+
+// Add net worth trend data
+export const mockNetWorthTrendData = {
+  months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  assets: [
+    680000, 702000, 785000, 768000, 790000, 781000, 
+    782000, 773000, 793500, 790800, 794000, 789200
+  ],
+  liabilities: [
+    520000, 518500, 517000, 515500, 514000, 512500,
+    511000, 509500, 508000, 506500, 505000, 503500
+  ],
+  metrics: [
+    {
+      label: "YTD Change",
+      value: "+$29,700",
+      percentage: "+11.4%",
+      trend: "up"
+    },
+    {
+      label: "Monthly Change",
+      value: "-$1,800",
+      percentage: "-0.6%",
+      trend: "down"
+    },
+    {
+      label: "Average Growth",
+      value: "$2,475/mo",
+      percentage: "+0.9%",
+      trend: "up"
+    }
+  ]
+} 

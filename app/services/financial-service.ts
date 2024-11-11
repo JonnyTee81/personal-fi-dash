@@ -16,7 +16,11 @@ import {
   mockNetWorthSummary,
   mockTransactions,
   mockMonthlySpending,
-  mockMonthlyIncome
+  mockMonthlyIncome,
+  mockStatsData,
+  mockSpendingCategories,
+  mockMonthlyComparisonData,
+  mockNetWorthTrendData
 } from '@/data/mock-financial-data'
 
 export class FinancialService {
@@ -65,6 +69,26 @@ export class FinancialService {
 
   async getMonthlyIncome(): Promise<TimeseriesData[]> {
     return mockMonthlyIncome
+  }
+
+  // Stats methods
+  async getStatsData() {
+    return mockStatsData
+  }
+
+  // Monthly spending methods
+  async getSpendingCategories() {
+    return mockSpendingCategories
+  }
+
+  // Monthly comparison methods
+  async getMonthlyComparison() {
+    return mockMonthlyComparisonData
+  }
+
+  // Net worth trend methods
+  async getNetWorthTrend() {
+    return mockNetWorthTrendData
   }
 }
 
