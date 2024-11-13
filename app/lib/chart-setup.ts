@@ -17,6 +17,7 @@ export type ChartData<T extends 'line' | 'bar' | 'doughnut'> = {
     borderRadius?: number
     maxBarThickness?: number
     pointRadius?: number
+    borderDash?: number[]
   }[]
 }
 

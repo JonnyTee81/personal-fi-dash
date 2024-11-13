@@ -1,14 +1,11 @@
 'use client'
 
-import { InvestmentPerformance } from "@/components/dashboard/investment-performance"
-import { AssetAllocation } from "@/components/dashboard/asset-allocation"
-import { RiskAnalysis } from "@/components/dashboard/risk-analysis"
-import { Notifications } from "@/components/dashboard/notifications"
-import { PortfolioSummary } from "@/components/dashboard/portfolio-summary"
-import { InvestmentAccounts } from "@/components/dashboard/investment-accounts"
+import { InvestmentPerformance } from "@/app/components/line-charts/investment-performance"
+import { AssetAllocation } from "@/components/pie-charts/asset-allocation"
+import { RiskAnalysis } from "@/components/progress-charts/risk-analysis"
+import { InvestmentAccounts } from "@/components/tables/investment-accounts"
 import { StatsCard } from "@/components/tiles/stats-card"
-import { RetirementProjection } from "@/components/dashboard/retirement-projection"
-import { TaxAnalysis } from "@/components/dashboard/tax-analysis"
+import { RetirementProjection } from "@/components/line-charts/retirement-projection"
 
 export default function Investments() {
   return (

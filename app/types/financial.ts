@@ -125,4 +125,16 @@ export interface NetWorthSummary {
       other: number
     }
   }
+}
+
+export interface PlannedCashFlowItem {
+  label: string
+  value: number
+  target: number
+  description: string
+  color: string
+}
+
+export interface PlannedCashFlow {
+  items: PlannedCashFlowItem[]
 } 
